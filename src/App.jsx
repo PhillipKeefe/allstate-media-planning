@@ -41,7 +41,7 @@ function getTier(d) {
 }
 
 const TIER_META = {
-  anchor:       { label: "Anchor",       full: "High Reach + High Propensity",  color: "#22c55e", bg: "rgba(34,197,94,0.08)",   rec: "Allocate majority of budget" },
+  anchor:       { label: "Priority Investment", full: "High Reach + High Propensity",  color: "#22c55e", bg: "rgba(34,197,94,0.08)",   rec: "Allocate majority of budget" },
   efficiency:   { label: "Efficiency",    full: "Low Reach + High Propensity",   color: "#3b82f6", bg: "rgba(59,130,246,0.08)",  rec: "Layer in for incremental reach" },
   scale:        { label: "Scale Only",    full: "High Reach + Low Propensity",   color: "#f59e0b", bg: "rgba(245,158,11,0.08)",  rec: "Use selectively for broad reach" },
   deprioritize: { label: "Deprioritize",  full: "Low Reach + Low Propensity",    color: "#94a3b8", bg: "rgba(148,163,184,0.06)", rec: "Shift budget away" },
@@ -202,21 +202,21 @@ export default function App() {
         }}>
           <div style={{
             fontSize: 16, fontWeight: 700, color: "#f8fafc",
-            padding: "0 0 16px 16px",
+            padding: "0 0 16px 16px", textAlign: "center",
           }}>
-            Reach vs. Propensity
+            Viewing Propensity vs. Share of Total Viewing
           </div>
-          <div style={{ position: "absolute", top: 56, right: 52, fontSize: 10, color: "#22c55e", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-            High Reach + High Propensity
+          <div style={{ position: "absolute", top: 56, right: 34, fontSize: 10, color: "#22c55e", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: "right" }}>
+            High Reach +<br/>High Propensity
           </div>
-          <div style={{ position: "absolute", top: 56, left: 84, fontSize: 10, color: "#3b82f6", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-            Low Reach + High Propensity
+          <div style={{ position: "absolute", top: 56, left: 72, fontSize: 10, color: "#3b82f6", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: "left" }}>
+            Low Reach +<br/>High Propensity
           </div>
-          <div style={{ position: "absolute", bottom: 52, right: 52, fontSize: 10, color: "#f59e0b", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-            High Reach + Low Propensity
+          <div style={{ position: "absolute", bottom: 90, right: 34, fontSize: 10, color: "#f59e0b", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: "right" }}>
+            High Reach +<br/>Low Propensity
           </div>
-          <div style={{ position: "absolute", bottom: 52, left: 84, fontSize: 10, color: "#94a3b8", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-            Low Reach + Low Propensity
+          <div style={{ position: "absolute", bottom: 90, left: 72, fontSize: 10, color: "#94a3b8", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: "left" }}>
+            Low Reach +<br/>Low Propensity
           </div>
           <ResponsiveContainer width="100%" height={460}>
             <ScatterChart margin={{ top: 10, right: 30, bottom: 35, left: 25 }}>
@@ -229,7 +229,7 @@ export default function App() {
                 stroke="#334155"
                 tickFormatter={v => `${v}%`}
               >
-                <Label value="Honda Intender Viewing Share (%, log scale)" position="bottom" offset={14}
+                <Label value="Share of Total Viewing" position="bottom" offset={14}
                   style={{ fill: "#94a3b8", fontSize: 12, fontFamily: "DM Sans" }} />
               </XAxis>
               <YAxis
@@ -238,8 +238,18 @@ export default function App() {
                 stroke="#334155"
                 domain={[75, 125]}
               >
-                <Label value="Weighted Median Viewing Index" angle={-90} position="left" offset={6}
-                  style={{ fill: "#94a3b8", fontSize: 12, fontFamily: "DM Sans" }} />
+                <Label angle={-90} position="insideLeft" dy={12}
+                  content={({ viewBox }) => {
+                    const cx = viewBox.x + 2;
+                    const cy = viewBox.y + viewBox.height / 2;
+                    return (
+                      <text x={cx} y={cy} textAnchor="middle" fill="#94a3b8" fontSize={12} fontFamily="DM Sans" transform={`rotate(-90, ${cx}, ${cy})`}>
+                        <tspan x={cx} dy="-0.6em">Viewing Propensity</tspan>
+                        <tspan x={cx} dy="1.3em">(Median Viewing Index)</tspan>
+                      </text>
+                    );
+                  }}
+                />
               </YAxis>
               <ReferenceLine y={PROPENSITY_THRESHOLD} stroke="#475569" strokeDasharray="6 4" strokeWidth={1.5} />
               <ReferenceLine x={REACH_THRESHOLD} stroke="#475569" strokeDasharray="6 4" strokeWidth={1.5} />
@@ -268,7 +278,7 @@ export default function App() {
             Honda intenders watch the same total amount of streaming as the general population (Wilcoxon p = 0.39, not significant).
             However, they distribute that time differently across platforms (Chi-square p &lt; 0.001, highly significant).
             The opportunity is not in buying more impressions — it's in buying them in the right places.
-            Anchor platforms (Hulu, Amazon Prime Video, Dish, Paramount+, Peacock) combine scale with behavioral lean
+            Priority Investment platforms (Hulu, Amazon Prime Video, Dish, Paramount+, Peacock) combine scale with behavioral lean
             and should receive the majority of budget allocation.
           </div>
         </div>
@@ -392,7 +402,7 @@ export default function App() {
             correctly reflecting the latter's superior targeting efficiency.
           </div>
           <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8, marginTop: 8 }}>
-            <strong style={{ color: "#cbd5e1" }}>Tier thresholds:</strong> Anchor = share ≥ {REACH_THRESHOLD}% and index ≥ {PROPENSITY_THRESHOLD}.
+            <strong style={{ color: "#cbd5e1" }}>Tier thresholds:</strong> Priority Investment = share ≥ {REACH_THRESHOLD}% and index ≥ {PROPENSITY_THRESHOLD}.
             Efficiency = index ≥ {PROPENSITY_THRESHOLD}, share &lt; {REACH_THRESHOLD}%. Scale Only = share ≥ {REACH_THRESHOLD}%, index &lt; {PROPENSITY_THRESHOLD}.
             Deprioritize = below both.
           </div>
