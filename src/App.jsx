@@ -180,14 +180,41 @@ export default function App() {
           </div>
           <h1 style={{
             fontSize: 32, fontWeight: 700, letterSpacing: "-0.03em",
-            margin: "0 0 8px 0", color: "#f8fafc", lineHeight: 1.2,
+            margin: "0 0 20px 0", color: "#f8fafc", lineHeight: 1.2,
           }}>
-            Honda Intender Media Priority
+            Streaming Investment Opportunities for Honda Intenders
           </h1>
-          <p style={{ fontSize: 15, color: "#94a3b8", maxWidth: 620, lineHeight: 1.6 }}>
-            Mapping reach against behavioral propensity to identify where Honda auto
-            intenders are most concentrated across streaming platforms.
-          </p>
+
+          <div style={{
+            background: "#16162a", borderRadius: 12, border: "1px solid #1e293b",
+            padding: "22px 26px", marginBottom: 0,
+          }}>
+            <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.7, marginBottom: 14 }}>
+              Samba leveraged how consumers engage online to identify where Honda purchase intenders
+              spend their streaming time and where media investment will have the highest impact.
+            </div>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 14 }}>
+              <span style={{ fontSize: 18, fontWeight: 700, color: "#f8fafc" }}>Honda Intenders</span>
+              <span style={{ fontSize: 13, color: "#64748b" }}>·</span>
+              <span style={{ fontSize: 13, color: "#94a3b8" }}>[X.X]MM Households</span>
+            </div>
+            <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginBottom: 10 }}>
+              Households actively researching a potential Honda purchase by:
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 24px", fontSize: 13, color: "#94a3b8", lineHeight: 1.8 }}>
+              <span>• Browsing listings on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarGurus</span></span>
+              <span>• Checking valuations on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Kelley Blue Book</span></span>
+              <span>• Reading reviews on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>MotorTrend</span> and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Car and Driver</span></span>
+              <span>• Scanning owner feedback on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarComplaints</span></span>
+            </div>
+            <div style={{
+              fontSize: 13, color: "#94a3b8", lineHeight: 1.7, marginTop: 16,
+              paddingTop: 14, borderTop: "1px solid #1e293b",
+            }}>
+              Using this cohort, we mapped their streaming behavior against the general population
+              to surface which platforms offer the strongest combination of reach and behavioral concentration.
+            </div>
+          </div>
         </div>
 
         <div style={{ display: "flex", gap: 12, marginBottom: 32, flexWrap: "wrap" }}>
