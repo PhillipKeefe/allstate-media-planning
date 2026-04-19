@@ -30,10 +30,13 @@ const RAW_DATA = [
   { app: "Google Play Store", honda_pct: 0.6, median_index: 101 },
 ];
 
+const REACH_THRESHOLD = 4;
+const PROPENSITY_THRESHOLD = 100;
+
 function getTier(d) {
-  if (d.honda_pct >= 4 && d.median_index >= 105) return "anchor";
-  if (d.honda_pct < 4 && d.median_index >= 105) return "efficiency";
-  if (d.honda_pct >= 4 && d.median_index < 105) return "scale";
+  if (d.honda_pct >= REACH_THRESHOLD && d.median_index >= PROPENSITY_THRESHOLD) return "anchor";
+  if (d.honda_pct < REACH_THRESHOLD && d.median_index >= PROPENSITY_THRESHOLD) return "efficiency";
+  if (d.honda_pct >= REACH_THRESHOLD && d.median_index < PROPENSITY_THRESHOLD) return "scale";
   return "deprioritize";
 }
 
@@ -43,6 +46,8 @@ const TIER_META = {
   scale:        { label: "Scale Only",    full: "High Reach + Low Propensity",   color: "#f59e0b", bg: "rgba(245,158,11,0.08)",  rec: "Use selectively for broad reach" },
   deprioritize: { label: "Deprioritize",  full: "Low Reach + Low Propensity",    color: "#94a3b8", bg: "rgba(148,163,184,0.06)", rec: "Shift budget away" },
 };
+
+const LOG_TICKS = [0.5, 1, 2, 4, 8, 16, 24];
 
 const CustomTooltip = ({ active, payload }) => {
   if (!active || !payload?.length) return null;
@@ -162,6 +167,8 @@ export default function App() {
       minHeight: "100vh",
       padding: "40px 28px 60px",
     }}>
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
 
         <div style={{ marginBottom: 40 }}>
@@ -191,7 +198,7 @@ export default function App() {
 
         <div style={{
           background: "#16162a", borderRadius: 12, padding: "28px 20px 16px 8px",
-          border: "1px solid #1e293b", marginBottom: 32, position: "relative"
+          border: "1px solid #1e293b", marginBottom: 8, position: "relative"
         }}>
           <div style={{
             fontSize: 16, fontWeight: 700, color: "#f8fafc",
@@ -216,12 +223,13 @@ export default function App() {
               <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
               <XAxis
                 dataKey="honda_pct" type="number"
+                scale="log" domain={[0.5, 28]}
+                ticks={LOG_TICKS}
                 tick={{ fill: "#94a3b8", fontSize: 12, fontFamily: "JetBrains Mono" }}
                 stroke="#334155"
-                domain={[0, 24]}
                 tickFormatter={v => `${v}%`}
               >
-                <Label value="Honda Intender Viewing Share (%)" position="bottom" offset={14}
+                <Label value="Honda Intender Viewing Share (%, log scale)" position="bottom" offset={14}
                   style={{ fill: "#94a3b8", fontSize: 12, fontFamily: "DM Sans" }} />
               </XAxis>
               <YAxis
@@ -233,14 +241,20 @@ export default function App() {
                 <Label value="Weighted Median Viewing Index" angle={-90} position="left" offset={6}
                   style={{ fill: "#94a3b8", fontSize: 12, fontFamily: "DM Sans" }} />
               </YAxis>
-              <ReferenceLine y={100} stroke="#475569" strokeDasharray="6 4" strokeWidth={1.5} />
-              <ReferenceLine x={4} stroke="#475569" strokeDasharray="6 4" strokeWidth={1.5} />
+              <ReferenceLine y={PROPENSITY_THRESHOLD} stroke="#475569" strokeDasharray="6 4" strokeWidth={1.5} />
+              <ReferenceLine x={REACH_THRESHOLD} stroke="#475569" strokeDasharray="6 4" strokeWidth={1.5} />
               <Tooltip content={<CustomTooltip />} cursor={false} />
               <Scatter data={data} shape={<CustomDot />}>
                 {data.map((d, i) => <Cell key={i} />)}
               </Scatter>
             </ScatterChart>
           </ResponsiveContainer>
+        </div>
+        <div style={{
+          fontSize: 11, color: "#475569", fontStyle: "italic",
+          padding: "0 0 28px 16px",
+        }}>
+          X-axis uses a logarithmic scale to better distribute clustered values. Actual percentages shown on axis labels, tooltips, and table.
         </div>
 
         <div style={{
@@ -254,7 +268,7 @@ export default function App() {
             Honda intenders watch the same total amount of streaming as the general population (Wilcoxon p = 0.39, not significant).
             However, they distribute that time differently across platforms (Chi-square p &lt; 0.001, highly significant).
             The opportunity is not in buying more impressions — it's in buying them in the right places.
-            Anchor platforms (Hulu, Amazon, Dish, Paramount+, Peacock) combine scale with behavioral lean
+            Anchor platforms (Hulu, Amazon Prime Video, Dish, Paramount+, Peacock) combine scale with behavioral lean
             and should receive the majority of budget allocation.
           </div>
         </div>
@@ -324,8 +338,8 @@ export default function App() {
                       <td style={{
                         padding: "10px 18px", textAlign: "right",
                         fontFamily: "JetBrains Mono", fontSize: 12,
-                        color: d.median_index >= 105 ? "#22c55e" : d.median_index <= 95 ? "#ef4444" : "#cbd5e1",
-                        fontWeight: d.median_index >= 105 || d.median_index <= 95 ? 600 : 400,
+                        color: d.median_index >= PROPENSITY_THRESHOLD ? "#22c55e" : "#ef4444",
+                        fontWeight: 600,
                       }}>
                         {d.median_index}
                       </td>
@@ -363,7 +377,8 @@ export default function App() {
           </div>
           <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8 }}>
             <strong style={{ color: "#cbd5e1" }}>Reach (x-axis):</strong> Honda intender viewing share — the percentage of total Honda intender
-            weighted streaming minutes captured by each app. Measures absolute audience size.
+            weighted streaming minutes captured by each app. Displayed on a logarithmic scale to better
+            distribute the wide range of values (0.6% to 21.4%). Actual percentages are shown on all labels.
           </div>
           <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8, marginTop: 8 }}>
             <strong style={{ color: "#cbd5e1" }}>Propensity (y-axis):</strong> Weighted median viewing index — the typical Honda intender
@@ -377,8 +392,8 @@ export default function App() {
             correctly reflecting the latter's superior targeting efficiency.
           </div>
           <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8, marginTop: 8 }}>
-            <strong style={{ color: "#cbd5e1" }}>Tier thresholds:</strong> Anchor = share ≥ 4% and index ≥ 105.
-            Efficiency = index ≥ 105, share &lt; 4%. Scale Only = share ≥ 4%, index &lt; 105.
+            <strong style={{ color: "#cbd5e1" }}>Tier thresholds:</strong> Anchor = share ≥ {REACH_THRESHOLD}% and index ≥ {PROPENSITY_THRESHOLD}.
+            Efficiency = index ≥ {PROPENSITY_THRESHOLD}, share &lt; {REACH_THRESHOLD}%. Scale Only = share ≥ {REACH_THRESHOLD}%, index &lt; {PROPENSITY_THRESHOLD}.
             Deprioritize = below both.
           </div>
         </div>
