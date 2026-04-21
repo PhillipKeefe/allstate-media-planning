@@ -5,35 +5,36 @@ import {
 } from "recharts";
 
 const RAW_DATA = [
-  { app: "Hulu", honda_pct: 21.4, median_index: 119 },
-  { app: "Netflix", honda_pct: 18.0, median_index: 96 },
-  { app: "Amazon Prime Video", honda_pct: 9.5, median_index: 118 },
-  { app: "Dish", honda_pct: 8.2, median_index: 117 },
-  { app: "Paramount+", honda_pct: 7.1, median_index: 110 },
-  { app: "Max", honda_pct: 4.7, median_index: 99 },
-  { app: "Peacock", honda_pct: 4.2, median_index: 117 },
-  { app: "Sling TV", honda_pct: 2.7, median_index: 95 },
-  { app: "DirecTV", honda_pct: 2.6, median_index: 85 },
-  { app: "Xfinity Stream", honda_pct: 2.3, median_index: 102 },
-  { app: "Disney+", honda_pct: 2.3, median_index: 80 },
-  { app: "Apple TV", honda_pct: 2.2, median_index: 103 },
-  { app: "fubo", honda_pct: 1.8, median_index: 106 },
-  { app: "Fox Nation", honda_pct: 1.4, median_index: 120 },
-  { app: "Pluto TV", honda_pct: 1.3, median_index: 93 },
-  { app: "Vudu", honda_pct: 1.3, median_index: 91 },
-  { app: "YouTube TV", honda_pct: 1.2, median_index: 95 },
-  { app: "Tubi", honda_pct: 1.0, median_index: 93 },
-  { app: "Roku", honda_pct: 1.0, median_index: 109 },
-  { app: "Discovery+", honda_pct: 1.0, median_index: 86 },
-  { app: "Apple TV+", honda_pct: 0.7, median_index: 117 },
-  { app: "YouTube", honda_pct: 0.6, median_index: 91 },
-  { app: "Google Play Store", honda_pct: 0.6, median_index: 101 },
+  { app: "Hulu", honda_pct: 21.4, median_index: 110 },
+  { app: "Netflix", honda_pct: 18.0, median_index: 95 },
+  { app: "Amazon Prime Video", honda_pct: 9.6, median_index: 107 },
+  { app: "Dish", honda_pct: 8.2, median_index: 116 },
+  { app: "Paramount+", honda_pct: 7.3, median_index: 104 },
+  { app: "Max", honda_pct: 4.7, median_index: 91 },
+  { app: "Peacock", honda_pct: 4.2, median_index: 88 },
+  { app: "Sling TV", honda_pct: 2.7, median_index: 92 },
+  { app: "DirecTV", honda_pct: 2.4, median_index: 100, override_tier: "deprioritize" },
+  { app: "Xfinity Stream", honda_pct: 2.3, median_index: 92 },
+  { app: "Disney+", honda_pct: 2.3, median_index: 90 },
+  { app: "Apple TV", honda_pct: 2.1, median_index: 92 },
+  { app: "fubo", honda_pct: 1.8, median_index: 105 },
+  { app: "Fox Nation", honda_pct: 1.4, median_index: 95 },
+  { app: "Pluto TV", honda_pct: 1.3, median_index: 98 },
+  { app: "Vudu", honda_pct: 1.3, median_index: 99 },
+  { app: "YouTube TV", honda_pct: 1.2, median_index: 101 },
+  { app: "Tubi", honda_pct: 1.0, median_index: 101 },
+  { app: "Roku", honda_pct: 0.9, median_index: 98 },
+  { app: "Discovery+", honda_pct: 1.0, median_index: 98 },
+  { app: "Apple TV+", honda_pct: 0.7, median_index: 127 },
+  { app: "Google Play Store", honda_pct: 0.6, median_index: 98 },
 ];
 
 const REACH_THRESHOLD = 4;
 const PROPENSITY_THRESHOLD = 100;
 
+
 function getTier(d) {
+  if (d.override_tier) return d.override_tier;
   if (d.honda_pct >= REACH_THRESHOLD && d.median_index >= PROPENSITY_THRESHOLD) return "anchor";
   if (d.honda_pct < REACH_THRESHOLD && d.median_index >= PROPENSITY_THRESHOLD) return "efficiency";
   if (d.honda_pct >= REACH_THRESHOLD && d.median_index < PROPENSITY_THRESHOLD) return "scale";
@@ -65,7 +66,7 @@ const CustomTooltip = ({ active, payload }) => {
     }}>
       <div style={{ fontWeight: 700, fontSize: 15, color: "#f8fafc", marginBottom: 4 }}>{d.app}</div>
       <div style={{ display: "flex", justifyContent: "space-between", gap: 24 }}>
-        <span style={{ color: "#94a3b8" }}>Honda Share</span>
+        <span style={{ color: "#94a3b8" }}>Intender Share</span>
         <span style={{ fontFamily: "JetBrains Mono", fontWeight: 500 }}>{d.honda_pct.toFixed(1)}%</span>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", gap: 24 }}>
@@ -202,23 +203,30 @@ export default function App() {
             <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 14 }}>
               <span style={{ fontSize: 18, fontWeight: 700, color: "#f8fafc" }}>Honda Intenders</span>
               <span style={{ fontSize: 13, color: "#64748b" }}>·</span>
-              <span style={{ fontSize: 13, color: "#94a3b8" }}>[X.X]MM Households</span>
+              <span style={{ fontSize: 18, fontWeight: 700, color: "#f8fafc" }}>4.1MM Households</span>
             </div>
             <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginBottom: 10 }}>
               Households actively researching a potential Honda purchase by:
             </div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 24px", fontSize: 13, color: "#94a3b8", lineHeight: 1.8 }}>
-              <span>• Browsing listings on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarGurus</span></span>
-              <span>• Checking valuations on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Kelley Blue Book</span></span>
-              <span>• Reading reviews on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>MotorTrend</span> and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Car and Driver</span></span>
-              <span>• Scanning owner feedback on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarComplaints</span></span>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13, color: "#94a3b8", lineHeight: 1.8 }}>
+              <div>• Browsing listings on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarGurus</span>, <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarsDirect</span>, and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>AutoTempest</span></div>
+              <div>• Checking valuations on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Kelley Blue Book</span></div>
+              <div>• Reading reviews on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>MotorTrend</span>, <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Car and Driver</span>, and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>The Drive</span></div>
+              <div>• Comparing specifications on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Ultimate Specs</span> and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Zero to 60 Times</span></div>
+              <div>• Scanning owner feedback on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarComplaints</span></div>
+            </div>
+            <div style={{ fontSize: 11, color: "#64748b", fontStyle: "italic", marginTop: 10, lineHeight: 1.6 }}>
+              Sites shown are a representative sample from a broader curated panel of automotive research destinations used to identify in-market purchase intenders.
             </div>
             <div style={{
               fontSize: 13, color: "#94a3b8", lineHeight: 1.7, marginTop: 16,
               paddingTop: 14, borderTop: "1px solid #1e293b",
             }}>
-              Using this cohort, we mapped their streaming behavior against the general population
-              to surface which platforms offer the strongest combination of reach and behavioral concentration.
+              Streaming behavior for this cohort was benchmarked against the general population across two
+              dimensions: how much of their total viewing time each platform captures, and how disproportionately
+              Honda intenders engage with the content compared to the average household. A strong streaming strategy
+              requires both. Reach alone fills a funnel with noise, and propensity alone limits scale. The framework
+              below balances the two, enabling more precise allocation of media investment across the streaming landscape.
             </div>
           </div>
         </div>
@@ -269,7 +277,7 @@ export default function App() {
                 dataKey="median_index" type="number"
                 tick={{ fill: "#94a3b8", fontSize: 12, fontFamily: "JetBrains Mono" }}
                 stroke="#334155"
-                domain={[75, 125]}
+                domain={[82, 132]}
               >
                 <Label angle={-90} position="insideLeft" dy={12}
                   content={({ viewBox }) => {
@@ -311,7 +319,7 @@ export default function App() {
             Honda intenders watch the same total amount of streaming as the general population (Wilcoxon p = 0.39, not significant).
             However, they distribute that time differently across platforms (Chi-square p &lt; 0.001, highly significant).
             The opportunity is not in buying more impressions — it's in buying them in the right places.
-            Priority Investment platforms (Hulu, Amazon Prime Video, Dish, Paramount+, Peacock) combine scale with behavioral lean
+            Priority Investment platforms (Hulu, Amazon Prime Video, Dish, Paramount+, fubo) combine scale with behavioral lean
             and should receive the majority of budget allocation.
           </div>
         </div>
@@ -325,7 +333,7 @@ export default function App() {
               Priority Score Table
             </div>
             <div style={{ fontSize: 12, color: "#64748b", marginTop: 4 }}>
-              Priority = Honda Share × Weighted Median Index. Click headers to sort.
+              Priority = Intender Reach × Median Viewing Index. Click headers to sort.
             </div>
           </div>
           <div style={{ overflowX: "auto" }}>
@@ -334,7 +342,7 @@ export default function App() {
                 <tr style={{ borderBottom: "1px solid #1e293b" }}>
                   {[
                     { key: "app", label: "Application", align: "left" },
-                    { key: "honda_pct", label: "Honda Share %", align: "right" },
+                    { key: "honda_pct", label: "Intender Share %", align: "right" },
                     { key: "median_index", label: "Median Index", align: "right" },
                     { key: "priority", label: "Priority", align: "right" },
                   ].map(col => (
@@ -430,7 +438,7 @@ export default function App() {
             Honda intenders lean into an app harder than the average household.
           </div>
           <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8, marginTop: 8 }}>
-            <strong style={{ color: "#cbd5e1" }}>Priority score:</strong> Honda share × median index. Rewards both scale and behavioral
+            <strong style={{ color: "#cbd5e1" }}>Priority score:</strong> Intender share × median index. Rewards both scale and behavioral
             concentration. A high-share app at index 100 scores lower than a high-share app at index 115,
             correctly reflecting the latter's superior targeting efficiency.
           </div>
