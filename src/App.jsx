@@ -130,6 +130,7 @@ function TierCard({ tierKey, apps }) {
 export default function App() {
   const [sortCol, setSortCol] = useState("priority");
   const [sortDir, setSortDir] = useState("desc");
+  const [hoveredGroup, setHoveredGroup] = useState(null);
 
   const data = useMemo(() =>
     RAW_DATA.map(d => ({
@@ -172,9 +173,11 @@ export default function App() {
     }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
       <style>{`
-        .glance-finding { padding: 6px 10px; border-radius: 6px; transition: background 0.2s ease, font-weight 0.2s ease; }
+        .glance-finding { padding: 6px 10px; border-radius: 6px; transition: background 0.2s ease, font-weight 0.2s ease; position: relative; padding-left: 20px; }
+        .glance-finding::before { content: ''; position: absolute; left: -12px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
         .glance-finding:hover { background: rgba(34,197,94,0.20); font-weight: 600; }
-        .glance-action { padding: 6px 10px; border-radius: 6px; transition: background 0.2s ease, font-weight 0.2s ease; }
+        .glance-action { padding: 6px 10px; border-radius: 6px; transition: background 0.2s ease, font-weight 0.2s ease; position: relative; padding-left: 20px; }
+        .glance-action::before { content: ''; position: absolute; left: -12px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; border-radius: 50%; background: #3b82f6; }
         .glance-action:hover { background: rgba(59,130,246,0.20); font-weight: 600; }
       `}</style>
 
@@ -187,13 +190,13 @@ export default function App() {
         <div style={{ marginBottom: 40 }}>
           <div style={{
             fontSize: 11, fontWeight: 600, letterSpacing: "0.12em",
-            color: "#64748b", textTransform: "uppercase", marginBottom: 8,
+            color: "#64748b", textTransform: "uppercase", marginBottom: 16,
           }}>
             Streaming Media Analysis — March 2026
           </div>
           <h1 style={{
             fontSize: 32, fontWeight: 700, letterSpacing: "-0.03em",
-            margin: "0 0 20px 0", color: "#f8fafc", lineHeight: 1.2,
+            margin: "0 0 40px 0", color: "#f8fafc", lineHeight: 1.2,
           }}>
             Streaming Investment Opportunities for Honda Intenders
           </h1>
@@ -208,7 +211,7 @@ export default function App() {
               <div style={{ fontSize: 10, fontWeight: 700, color: "#22c55e", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>
                 Finding
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 2, fontSize: 13, color: "#94a3b8", lineHeight: 1.7, marginLeft: -10 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 2, fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginLeft: -10 }}>
                 <div className="glance-finding">4.1MM households are actively researching a Honda purchase online</div>
                 <div className="glance-finding">Only 29% have been exposed to a Honda ad on streaming, despite actively watching content on these platforms</div>
                 <div className="glance-finding">Their viewing patterns reveal clear preferences for specific platforms</div>
@@ -220,7 +223,7 @@ export default function App() {
               <div style={{ fontSize: 10, fontWeight: 700, color: "#3b82f6", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>
                 Action
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 2, fontSize: 13, color: "#94a3b8", lineHeight: 1.7, marginLeft: -10 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 2, fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginLeft: -10 }}>
                 <div className="glance-action">Create an audience of households actively researching Honda, available across any programmatic inventory</div>
                 <div className="glance-action">Activate on Hulu, Amazon Prime Video, Dish, Paramount+, and fubo, where intender viewing share and content affinity are highest</div>
               </div>
@@ -228,7 +231,7 @@ export default function App() {
           </div>
 
           {/* Section: Audience Definition */}
-          <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.10em", color: "#64748b", textTransform: "uppercase", marginBottom: 16 }}>
+          <div style={{ fontSize: 14, fontWeight: 500, letterSpacing: "0.04em", color: "#cbd5e1", textTransform: "uppercase", marginBottom: 20, marginTop: 54, paddingBottom: 12, borderBottom: "1px solid #1e293b" }}>
             Audience Definition
           </div>
 
@@ -240,7 +243,7 @@ export default function App() {
               flex: 1, background: "#16162a", borderRadius: 12, border: "1px solid #1e293b",
               padding: "22px 26px",
             }}>
-              <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.7, marginBottom: 14 }}>
+              <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginBottom: 14 }}>
                 Honda Intenders are individuals whose online behavior signals active interest in purchasing a vehicle.
                 These are consumers who are browsing inventory, comparing prices, reading professional reviews, and
                 researching reliability, all actions that indicate they are approaching or already in a buying decision.
@@ -255,7 +258,7 @@ export default function App() {
               <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginBottom: 10 }}>
                 Households actively researching a potential Honda purchase by:
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13, color: "#94a3b8", lineHeight: 1.8 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13, color: "#cbd5e1", lineHeight: 1.8 }}>
                 <div>• Browsing listings on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarGurus</span>, <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarsDirect</span>, and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>AutoTempest</span></div>
                 <div>• Checking valuations on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Kelley Blue Book</span></div>
                 <div>• Reading reviews on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>MotorTrend</span>, <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Car and Driver</span>, and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>The Drive</span></div>
@@ -273,39 +276,70 @@ export default function App() {
               border: "1px solid #1e293b", padding: "22px 26px",
               display: "flex", flexDirection: "column", justifyContent: "center",
             }}>
-              <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.7, marginBottom: 18 }}>
-                <span style={{ color: "#d4706e", fontWeight: 700 }}>28.6%</span> of{" "}
-                <span style={{ color: "#f8fafc", fontWeight: 700 }}>Honda Intenders</span> (~1.2MM households)
-                are reachable through streaming. Combined with linear TV, total reach extends
-                to <span style={{ color: "#f8fafc", fontWeight: 700 }}>2.4MM households</span> (57.8%),
-                leaving 1.7MM as an untapped opportunity.
+              <div style={{ minHeight: 90, marginBottom: 18, display: "flex", alignItems: "center" }}>
+                {!hoveredGroup ? (
+                  <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7 }}>
+                    <span style={{ color: "#d4706e", fontWeight: 700 }}>28.6%</span> of{" "}
+                    <span style={{ color: "#f8fafc", fontWeight: 700 }}>Honda Intenders</span> (~1.2MM households)
+                    were reached by at least one Honda ad within a streaming environment. Combined with linear TV, total reach extends
+                    to <span style={{ color: "#f8fafc", fontWeight: 700 }}>2.4MM households</span> (57.8%),
+                    leaving 1.7MM as an untapped opportunity.
+                  </div>
+                ) : (
+                  <div>
+                    {[
+                      { key: "streaming", color: "#d4706e", pct: "28.6%", label: "Reached on Streaming TV" },
+                      { key: "linear", color: "#c9a0a0", pct: "29.2%", label: "Reached on Linear TV Only" },
+                      { key: "unreached", color: "#64748b", pct: "42.2%", label: "Not Reached on TV" },
+                    ].filter(s => s.key === hoveredGroup).map(s => (
+                      <div key={s.key}>
+                        <div style={{ fontSize: 36, fontWeight: 700, color: s.color, fontFamily: "DM Sans", lineHeight: 1 }}>{s.pct}</div>
+                        <div style={{ fontSize: 24, fontWeight: 400, color: s.color, marginTop: -2, lineHeight: 1 }}>{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
               <svg viewBox="0 0 310 230" style={{ width: "100%" }}>
-                {Array.from({ length: 100 }, (_, i) => {
-                  const color = i < 29 ? "#d4706e" : i < 58 ? "#c9a0a0" : "#475569";
-                  const col = i % 10;
-                  const row = Math.floor(i / 10);
-                  return (
-                    <g key={i} transform={`translate(${col * 31}, ${row * 23})`}>
-                      <path d="M3,11 L3,7 Q3,5 5,5 L8,5 L11,1 Q12,0 13,0 L19,0 Q20,0 21,1 L23,5 L26,5 Q28,5 28,7 L28,11 Z" fill={color} />
-                      <circle cx={9} cy={13} r={2.2} fill={color} />
-                      <circle cx={22} cy={13} r={2.2} fill={color} />
-                    </g>
-                  );
-                })}
+                {[
+                  { key: "streaming", start: 0, end: 29, color: "#d4706e", hitY: 0, hitH: 68 },
+                  { key: "linear", start: 29, end: 58, color: "#c9a0a0", hitY: 68, hitH: 68 },
+                  { key: "unreached", start: 58, end: 100, color: "#475569", hitY: 136, hitH: 94 },
+                ].map(group => (
+                  <g key={group.key}
+                    onMouseEnter={() => setHoveredGroup(group.key)}
+                    onMouseLeave={() => setHoveredGroup(null)}
+                    style={{ cursor: "default" }}
+                  >
+                    <rect x={0} y={group.hitY} width={310} height={group.hitH} fill="transparent" />
+                    {Array.from({ length: group.end - group.start }, (_, j) => {
+                      const i = group.start + j;
+                      const col = i % 10;
+                      const row = Math.floor(i / 10);
+                      const dimmed = hoveredGroup && hoveredGroup !== group.key;
+                      return (
+                        <g key={i} transform={`translate(${col * 31}, ${row * 23})`} opacity={dimmed ? 0.25 : 1} style={{ transition: "opacity 0.2s ease" }}>
+                          <path d="M3,11 L3,7 Q3,5 5,5 L8,5 L11,1 Q12,0 13,0 L19,0 Q20,0 21,1 L23,5 L26,5 Q28,5 28,7 L28,11 Z" fill={group.color} />
+                          <circle cx={9} cy={13} r={2.2} fill={group.color} />
+                          <circle cx={22} cy={13} r={2.2} fill={group.color} />
+                        </g>
+                      );
+                    })}
+                  </g>
+                ))}
               </svg>
-              <div style={{ display: "flex", gap: 16, marginTop: 14, fontSize: 11, color: "#94a3b8" }}>
+              <div style={{ display: "flex", gap: 16, marginTop: 14, fontSize: 11, color: "#cbd5e1" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                   <div style={{ width: 10, height: 10, borderRadius: 2, background: "#d4706e" }} />
-                  Streaming (29%)
+                  Streaming
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                   <div style={{ width: 10, height: 10, borderRadius: 2, background: "#c9a0a0" }} />
-                  Linear Only (29%)
+                  Linear Only
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                   <div style={{ width: 10, height: 10, borderRadius: 2, background: "#475569" }} />
-                  Unreached (42%)
+                  Unreached
                 </div>
               </div>
             </div>
@@ -315,7 +349,7 @@ export default function App() {
             background: "#16162a", borderRadius: 12, border: "1px solid #1e293b",
             padding: "22px 26px", marginTop: 16, marginBottom: 0,
           }}>
-            <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.7 }}>
+            <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7 }}>
               Streaming behavior for this cohort was benchmarked against the general population across two
               dimensions: how much of their total viewing time each platform captures, and how disproportionately
               Honda Intenders engage with the content compared to the average household. A strong streaming strategy
@@ -326,7 +360,7 @@ export default function App() {
         </div>
 
         {/* Section: Platform Analysis */}
-        <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.10em", color: "#64748b", textTransform: "uppercase", marginBottom: 16, marginTop: 64 }}>
+        <div style={{ fontSize: 14, fontWeight: 500, letterSpacing: "0.04em", color: "#cbd5e1", textTransform: "uppercase", marginBottom: 20, marginTop: 54, paddingBottom: 12, borderBottom: "1px solid #1e293b" }}>
           Platform Analysis
         </div>
 
@@ -408,24 +442,24 @@ export default function App() {
         </div>
 
         <div style={{
-          background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.15)",
-          borderRadius: 10, padding: "18px 22px", marginBottom: 48, lineHeight: 1.7,
+          background: "#16162a", border: "1px solid #1e293b",
+          borderRadius: 12, padding: "18px 22px", marginBottom: 48, lineHeight: 1.7,
         }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: "#22c55e", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>
+          <div style={{ fontSize: 12, fontWeight: 700, color: "#f8fafc", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>
             Key Insight
           </div>
-          <div style={{ fontSize: 14, color: "#cbd5e1" }}>
+          <div style={{ fontSize: 13, color: "#cbd5e1" }}>
             Honda Intenders spend the same amount of time on streaming platforms as the general population,
-            but where they spend their time is meaningfully different. These viewing preferences create a clear
-            planning opportunity: rather than buying volume across the streaming landscape, investment can be
-            concentrated on the platforms where Honda Intenders spend a disproportionate amount of time. Hulu,
-            Amazon Prime Video, Dish, Paramount+, and fubo stand out as primary investment opportunities,
-            combining the highest intender viewing share with the strongest content affinity.
+            but where they spend their time is meaningfully different. The chart above shows five platforms
+            separating from the pack in the upper-right quadrant, where high viewing share meets strong content
+            affinity. These are not marginal differences. Hulu, Amazon Prime Video, Dish, Paramount+, and fubo
+            each index above 100 while capturing the largest shares of intender viewing time, making them the
+            most efficient entry points for streaming investment.
           </div>
         </div>
 
         {/* Section: Detailed Rankings */}
-        <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.10em", color: "#64748b", textTransform: "uppercase", marginBottom: 16, marginTop: 64 }}>
+        <div style={{ fontSize: 14, fontWeight: 500, letterSpacing: "0.04em", color: "#cbd5e1", textTransform: "uppercase", marginBottom: 20, marginTop: 54, paddingBottom: 12, borderBottom: "1px solid #1e293b" }}>
           Detailed Rankings
         </div>
 
@@ -525,7 +559,7 @@ export default function App() {
         </div>
 
         {/* Section: Methodology */}
-        <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.10em", color: "#64748b", textTransform: "uppercase", marginBottom: 16, marginTop: 64 }}>
+        <div style={{ fontSize: 14, fontWeight: 500, letterSpacing: "0.04em", color: "#cbd5e1", textTransform: "uppercase", marginBottom: 20, marginTop: 54, paddingBottom: 12, borderBottom: "1px solid #1e293b" }}>
           Methodology
         </div>
 
@@ -533,25 +567,25 @@ export default function App() {
           background: "#16162a", borderRadius: 12, border: "1px solid #1e293b",
           padding: "20px 22px", marginBottom: 32,
         }}>
-          <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8 }}>
+          <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.8 }}>
             <strong style={{ color: "#cbd5e1" }}>Honda Intender viewing share (x-axis):</strong> The percentage of total Honda Intender
             weighted streaming minutes captured by each app. Displayed on a logarithmic scale to better
             distribute the wide range of values (0.6% to 21.4%). Actual percentages are shown on all labels.
           </div>
-          <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8, marginTop: 8 }}>
+          <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.8, marginTop: 8 }}>
             <strong style={{ color: "#cbd5e1" }}>Weighted median viewing index (y-axis):</strong> The amount of time a typical Honda Intender
             spends on each app divided by the time spent by a typical TV viewing household, indexed to 100.
             Uses population-weighted medians to eliminate outlier bias. Values over 100 represent content affinity.
           </div>
-          <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8, marginTop: 8 }}>
+          <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.8, marginTop: 8 }}>
             <strong style={{ color: "#cbd5e1" }}>Priority score:</strong> A composite metric (intender share × median index) used to rank
             platforms across both dimensions simultaneously. Platforms with strong performance on both share and
             propensity score highest, making it easier to identify where investment will be most effective.
           </div>
-          <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8, marginTop: 8 }}>
+          <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.8, marginTop: 8 }}>
             <strong style={{ color: "#cbd5e1" }}>Investment categories:</strong>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 13, color: "#94a3b8", lineHeight: 1.8, marginTop: 4, paddingLeft: 8 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 13, color: "#cbd5e1", lineHeight: 1.8, marginTop: 4, paddingLeft: 8 }}>
             <div>• <strong style={{ color: "#cbd5e1" }}>Primary Investment</strong> = share ≥ {REACH_THRESHOLD}% and index ≥ {PROPENSITY_THRESHOLD}</div>
             <div>• <strong style={{ color: "#cbd5e1" }}>Content Affinity</strong> = share &lt; {REACH_THRESHOLD}% and index ≥ {PROPENSITY_THRESHOLD}</div>
             <div>• <strong style={{ color: "#cbd5e1" }}>Audience Coverage</strong> = share ≥ {REACH_THRESHOLD}% and index &lt; {PROPENSITY_THRESHOLD}</div>
