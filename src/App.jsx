@@ -42,10 +42,10 @@ function getTier(d) {
 }
 
 const TIER_META = {
-  anchor:       { label: "Priority Investment", full: "High Reach + High Propensity",  color: "#22c55e", bg: "rgba(34,197,94,0.08)",   rec: "Allocate majority of budget" },
-  efficiency:   { label: "Efficiency",    full: "Low Reach + High Propensity",   color: "#3b82f6", bg: "rgba(59,130,246,0.08)",  rec: "Layer in for incremental reach" },
-  scale:        { label: "Scale Only",    full: "High Reach + Low Propensity",   color: "#f59e0b", bg: "rgba(245,158,11,0.08)",  rec: "Use selectively for broad reach" },
-  deprioritize: { label: "Deprioritize",  full: "Low Reach + Low Propensity",    color: "#94a3b8", bg: "rgba(148,163,184,0.06)", rec: "Shift budget away" },
+  anchor:       { label: "Primary Investment", full: "High Share + High Propensity",  color: "#22c55e", bg: "rgba(34,197,94,0.08)",   rec: "The foundation of your media plan" },
+  efficiency:   { label: "Content Affinity",    full: "Low Share + High Propensity",   color: "#3b82f6", bg: "rgba(59,130,246,0.08)",  rec: "Improve audience relevance and efficiency" },
+  scale:        { label: "Audience Coverage",    full: "High Share + Low Propensity",   color: "#f59e0b", bg: "rgba(245,158,11,0.08)",  rec: "Extend coverage of your target audience" },
+  deprioritize: { label: "Supplemental",  full: "Low Share + Low Propensity",    color: "#94a3b8", bg: "rgba(148,163,184,0.06)", rec: "Consider only after priority platforms are funded" },
 };
 
 const LOG_TICKS = [0.5, 1, 2, 4, 8, 16, 24];
@@ -197,8 +197,11 @@ export default function App() {
             padding: "22px 26px", marginBottom: 0,
           }}>
             <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.7, marginBottom: 14 }}>
-              Samba leveraged how consumers engage online to identify where Honda purchase intenders
-              spend their streaming time and where media investment will have the highest impact.
+              Honda Intenders are individuals whose online behavior signals active interest in purchasing a vehicle.
+              These are consumers who are browsing inventory, comparing prices, reading professional reviews, and
+              researching reliability, all actions that indicate they are approaching or already in a buying decision.
+              Samba TV identified 4.1MM households exhibiting this behavior across a curated panel of automotive
+              research destinations.
             </div>
             <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 14 }}>
               <span style={{ fontSize: 18, fontWeight: 700, color: "#f8fafc" }}>Honda Intenders</span>
@@ -218,14 +221,17 @@ export default function App() {
             <div style={{ fontSize: 11, color: "#64748b", fontStyle: "italic", marginTop: 10, lineHeight: 1.6 }}>
               Sites shown are a representative sample from a broader curated panel of automotive research destinations used to identify in-market purchase intenders.
             </div>
-            <div style={{
-              fontSize: 13, color: "#94a3b8", lineHeight: 1.7, marginTop: 16,
-              paddingTop: 14, borderTop: "1px solid #1e293b",
-            }}>
+          </div>
+
+          <div style={{
+            background: "#16162a", borderRadius: 12, border: "1px solid #1e293b",
+            padding: "22px 26px", marginTop: 16, marginBottom: 0,
+          }}>
+            <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.7 }}>
               Streaming behavior for this cohort was benchmarked against the general population across two
               dimensions: how much of their total viewing time each platform captures, and how disproportionately
-              Honda intenders engage with the content compared to the average household. A strong streaming strategy
-              requires both. Reach alone fills a funnel with noise, and propensity alone limits scale. The framework
+              Honda Intenders engage with the content compared to the average household. A strong streaming strategy
+              requires both. Share alone fills a funnel with noise, and propensity alone limits scale. The framework
               below balances the two, enabling more precise allocation of media investment across the streaming landscape.
             </div>
           </div>
@@ -248,16 +254,16 @@ export default function App() {
             Viewing Propensity vs. Share of Total Viewing
           </div>
           <div style={{ position: "absolute", top: 56, right: 34, fontSize: 10, color: "#22c55e", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: "right" }}>
-            High Reach +<br/>High Propensity
+            High Share +<br/>High Propensity
           </div>
           <div style={{ position: "absolute", top: 56, left: 72, fontSize: 10, color: "#3b82f6", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: "left" }}>
-            Low Reach +<br/>High Propensity
+            Low Share +<br/>High Propensity
           </div>
           <div style={{ position: "absolute", bottom: 90, right: 34, fontSize: 10, color: "#f59e0b", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: "right" }}>
-            High Reach +<br/>Low Propensity
+            High Share +<br/>Low Propensity
           </div>
           <div style={{ position: "absolute", bottom: 90, left: 72, fontSize: 10, color: "#94a3b8", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: "left" }}>
-            Low Reach +<br/>Low Propensity
+            Low Share +<br/>Low Propensity
           </div>
           <ResponsiveContainer width="100%" height={460}>
             <ScatterChart margin={{ top: 10, right: 30, bottom: 35, left: 25 }}>
@@ -316,11 +322,12 @@ export default function App() {
             Key Insight
           </div>
           <div style={{ fontSize: 14, color: "#cbd5e1" }}>
-            Honda intenders watch the same total amount of streaming as the general population (Wilcoxon p = 0.39, not significant).
-            However, they distribute that time differently across platforms (Chi-square p &lt; 0.001, highly significant).
-            The opportunity is not in buying more impressions — it's in buying them in the right places.
-            Priority Investment platforms (Hulu, Amazon Prime Video, Dish, Paramount+, fubo) combine scale with behavioral lean
-            and should receive the majority of budget allocation.
+            Honda Intenders spend the same amount of time on streaming platforms as the general population,
+            but where they spend their time is meaningfully different. These viewing preferences create a clear
+            planning opportunity: rather than buying volume across the streaming landscape, investment can be
+            concentrated on the platforms where Honda Intenders spend a disproportionate amount of time. Hulu,
+            Amazon Prime Video, Dish, Paramount+, and fubo stand out as primary investment opportunities,
+            combining the highest intender viewing share with the strongest content affinity.
           </div>
         </div>
 
@@ -333,7 +340,7 @@ export default function App() {
               Priority Score Table
             </div>
             <div style={{ fontSize: 12, color: "#64748b", marginTop: 4 }}>
-              Priority = Intender Reach × Median Viewing Index. Click headers to sort.
+              Priority = Intender Share × Median Viewing Index. Click headers to sort.
             </div>
           </div>
           <div style={{ overflowX: "auto" }}>
@@ -364,7 +371,7 @@ export default function App() {
                     color: "#94a3b8", fontSize: 11, textTransform: "uppercase",
                     letterSpacing: "0.06em", fontFamily: "DM Sans"
                   }}>
-                    Tier
+                    Category
                   </th>
                 </tr>
               </thead>
@@ -427,25 +434,28 @@ export default function App() {
             Methodology
           </div>
           <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8 }}>
-            <strong style={{ color: "#cbd5e1" }}>Reach (x-axis):</strong> Honda intender viewing share — the percentage of total Honda intender
+            <strong style={{ color: "#cbd5e1" }}>Honda Intender viewing share (x-axis):</strong> The percentage of total Honda Intender
             weighted streaming minutes captured by each app. Displayed on a logarithmic scale to better
             distribute the wide range of values (0.6% to 21.4%). Actual percentages are shown on all labels.
           </div>
           <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8, marginTop: 8 }}>
-            <strong style={{ color: "#cbd5e1" }}>Propensity (y-axis):</strong> Weighted median viewing index — the typical Honda intender
-            household's viewing on each app divided by the typical general population household's viewing,
-            indexed to 100. Uses population-weighted medians to eliminate outlier bias. Values above 100 indicate
-            Honda intenders lean into an app harder than the average household.
+            <strong style={{ color: "#cbd5e1" }}>Weighted median viewing index (y-axis):</strong> The amount of time a typical Honda Intender
+            spends on each app divided by the time spent by a typical TV viewing household, indexed to 100.
+            Uses population-weighted medians to eliminate outlier bias. Values over 100 represent content affinity.
           </div>
           <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8, marginTop: 8 }}>
-            <strong style={{ color: "#cbd5e1" }}>Priority score:</strong> Intender share × median index. Rewards both scale and behavioral
-            concentration. A high-share app at index 100 scores lower than a high-share app at index 115,
-            correctly reflecting the latter's superior targeting efficiency.
+            <strong style={{ color: "#cbd5e1" }}>Priority score:</strong> A composite metric (intender share × median index) used to rank
+            platforms across both dimensions simultaneously. Platforms with strong performance on both share and
+            propensity score highest, making it easier to identify where investment will be most effective.
           </div>
           <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8, marginTop: 8 }}>
-            <strong style={{ color: "#cbd5e1" }}>Tier thresholds:</strong> Priority Investment = share ≥ {REACH_THRESHOLD}% and index ≥ {PROPENSITY_THRESHOLD}.
-            Efficiency = index ≥ {PROPENSITY_THRESHOLD}, share &lt; {REACH_THRESHOLD}%. Scale Only = share ≥ {REACH_THRESHOLD}%, index &lt; {PROPENSITY_THRESHOLD}.
-            Deprioritize = below both.
+            <strong style={{ color: "#cbd5e1" }}>Investment categories:</strong>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 13, color: "#94a3b8", lineHeight: 1.8, marginTop: 4, paddingLeft: 8 }}>
+            <div>• <strong style={{ color: "#cbd5e1" }}>Primary Investment</strong> = share ≥ {REACH_THRESHOLD}% and index ≥ {PROPENSITY_THRESHOLD}</div>
+            <div>• <strong style={{ color: "#cbd5e1" }}>Content Affinity</strong> = share &lt; {REACH_THRESHOLD}% and index ≥ {PROPENSITY_THRESHOLD}</div>
+            <div>• <strong style={{ color: "#cbd5e1" }}>Audience Coverage</strong> = share ≥ {REACH_THRESHOLD}% and index &lt; {PROPENSITY_THRESHOLD}</div>
+            <div>• <strong style={{ color: "#cbd5e1" }}>Supplemental</strong> = share &lt; {REACH_THRESHOLD}% and index &lt; {PROPENSITY_THRESHOLD}</div>
           </div>
         </div>
 
