@@ -171,6 +171,12 @@ export default function App() {
       padding: "40px 28px 60px",
     }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+      <style>{`
+        .glance-finding { padding: 6px 10px; border-radius: 6px; transition: background 0.2s ease, font-weight 0.2s ease; }
+        .glance-finding:hover { background: rgba(34,197,94,0.20); font-weight: 600; }
+        .glance-action { padding: 6px 10px; border-radius: 6px; transition: background 0.2s ease, font-weight 0.2s ease; }
+        .glance-action:hover { background: rgba(59,130,246,0.20); font-weight: 600; }
+      `}</style>
 
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
 
@@ -191,6 +197,40 @@ export default function App() {
           }}>
             Streaming Investment Opportunities for Honda Intenders
           </h1>
+
+          {/* At a Glance summary */}
+          <div style={{
+            display: "flex", gap: 16, marginBottom: 20,
+          }}>
+            <div style={{
+              flex: 1, borderLeft: "3px solid #22c55e", paddingLeft: 16,
+            }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: "#22c55e", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>
+                Finding
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 2, fontSize: 13, color: "#94a3b8", lineHeight: 1.7, marginLeft: -10 }}>
+                <div className="glance-finding">4.1MM households are actively researching a Honda purchase online</div>
+                <div className="glance-finding">Only 29% have been exposed to a Honda ad on streaming, despite actively watching content on these platforms</div>
+                <div className="glance-finding">Their viewing patterns reveal clear preferences for specific platforms</div>
+              </div>
+            </div>
+            <div style={{
+              flex: 1, borderLeft: "3px solid #3b82f6", paddingLeft: 16,
+            }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: "#3b82f6", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>
+                Action
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 2, fontSize: 13, color: "#94a3b8", lineHeight: 1.7, marginLeft: -10 }}>
+                <div className="glance-action">Create an audience of households actively researching Honda, available across any programmatic inventory</div>
+                <div className="glance-action">Activate on Hulu, Amazon Prime Video, Dish, Paramount+, and fubo, where intender viewing share and content affinity are highest</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Section: Audience Definition */}
+          <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.10em", color: "#64748b", textTransform: "uppercase", marginBottom: 16 }}>
+            Audience Definition
+          </div>
 
           <div style={{
             display: "flex", gap: 16, marginBottom: 0,
@@ -285,6 +325,11 @@ export default function App() {
           </div>
         </div>
 
+        {/* Section: Platform Analysis */}
+        <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.10em", color: "#64748b", textTransform: "uppercase", marginBottom: 16, marginTop: 64 }}>
+          Platform Analysis
+        </div>
+
         <div style={{ display: "flex", gap: 12, marginBottom: 32, flexWrap: "wrap" }}>
           {Object.entries(tierGroups).map(([key, apps]) => (
             <TierCard key={key} tierKey={key} apps={apps} />
@@ -357,14 +402,14 @@ export default function App() {
         </div>
         <div style={{
           fontSize: 11, color: "#475569", fontStyle: "italic",
-          padding: "0 0 28px 16px",
+          padding: "0 0 40px 16px",
         }}>
           X-axis uses a logarithmic scale to better distribute clustered values. Actual percentages shown on axis labels, tooltips, and table.
         </div>
 
         <div style={{
           background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.15)",
-          borderRadius: 10, padding: "18px 22px", marginBottom: 32, lineHeight: 1.7,
+          borderRadius: 10, padding: "18px 22px", marginBottom: 48, lineHeight: 1.7,
         }}>
           <div style={{ fontSize: 12, fontWeight: 700, color: "#22c55e", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>
             Key Insight
@@ -377,6 +422,11 @@ export default function App() {
             Amazon Prime Video, Dish, Paramount+, and fubo stand out as primary investment opportunities,
             combining the highest intender viewing share with the strongest content affinity.
           </div>
+        </div>
+
+        {/* Section: Detailed Rankings */}
+        <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.10em", color: "#64748b", textTransform: "uppercase", marginBottom: 16, marginTop: 64 }}>
+          Detailed Rankings
         </div>
 
         <div style={{
@@ -474,13 +524,15 @@ export default function App() {
           </div>
         </div>
 
+        {/* Section: Methodology */}
+        <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.10em", color: "#64748b", textTransform: "uppercase", marginBottom: 16, marginTop: 64 }}>
+          Methodology
+        </div>
+
         <div style={{
           background: "#16162a", borderRadius: 12, border: "1px solid #1e293b",
           padding: "20px 22px", marginBottom: 32,
         }}>
-          <div style={{ fontSize: 14, fontWeight: 700, color: "#f8fafc", marginBottom: 10 }}>
-            Methodology
-          </div>
           <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.8 }}>
             <strong style={{ color: "#cbd5e1" }}>Honda Intender viewing share (x-axis):</strong> The percentage of total Honda Intender
             weighted streaming minutes captured by each app. Displayed on a logarithmic scale to better
