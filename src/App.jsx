@@ -193,33 +193,81 @@ export default function App() {
           </h1>
 
           <div style={{
-            background: "#16162a", borderRadius: 12, border: "1px solid #1e293b",
-            padding: "22px 26px", marginBottom: 0,
+            display: "flex", gap: 16, marginBottom: 0,
           }}>
-            <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.7, marginBottom: 14 }}>
-              Honda Intenders are individuals whose online behavior signals active interest in purchasing a vehicle.
-              These are consumers who are browsing inventory, comparing prices, reading professional reviews, and
-              researching reliability, all actions that indicate they are approaching or already in a buying decision.
-              Samba TV identified 4.1MM households exhibiting this behavior across a curated panel of automotive
-              research destinations.
+            {/* Left pane – existing intro content */}
+            <div style={{
+              flex: 1, background: "#16162a", borderRadius: 12, border: "1px solid #1e293b",
+              padding: "22px 26px",
+            }}>
+              <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.7, marginBottom: 14 }}>
+                Honda Intenders are individuals whose online behavior signals active interest in purchasing a vehicle.
+                These are consumers who are browsing inventory, comparing prices, reading professional reviews, and
+                researching reliability, all actions that indicate they are approaching or already in a buying decision.
+                Samba TV identified 4.1MM households exhibiting this behavior across a curated panel of automotive
+                research destinations.
+              </div>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 14 }}>
+                <span style={{ fontSize: 18, fontWeight: 700, color: "#f8fafc" }}>Honda Intenders</span>
+                <span style={{ fontSize: 13, color: "#64748b" }}>·</span>
+                <span style={{ fontSize: 18, fontWeight: 700, color: "#f8fafc" }}>4.1MM Households</span>
+              </div>
+              <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginBottom: 10 }}>
+                Households actively researching a potential Honda purchase by:
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13, color: "#94a3b8", lineHeight: 1.8 }}>
+                <div>• Browsing listings on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarGurus</span>, <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarsDirect</span>, and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>AutoTempest</span></div>
+                <div>• Checking valuations on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Kelley Blue Book</span></div>
+                <div>• Reading reviews on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>MotorTrend</span>, <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Car and Driver</span>, and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>The Drive</span></div>
+                <div>• Comparing specifications on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Ultimate Specs</span> and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Zero to 60 Times</span></div>
+                <div>• Scanning owner feedback on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarComplaints</span></div>
+              </div>
+              <div style={{ fontSize: 11, color: "#64748b", fontStyle: "italic", marginTop: 10, lineHeight: 1.6 }}>
+                Sites shown are a representative sample from a broader curated panel of automotive research destinations used to identify in-market purchase intenders.
+              </div>
             </div>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 14 }}>
-              <span style={{ fontSize: 18, fontWeight: 700, color: "#f8fafc" }}>Honda Intenders</span>
-              <span style={{ fontSize: 13, color: "#64748b" }}>·</span>
-              <span style={{ fontSize: 18, fontWeight: 700, color: "#f8fafc" }}>4.1MM Households</span>
-            </div>
-            <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginBottom: 10 }}>
-              Households actively researching a potential Honda purchase by:
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 13, color: "#94a3b8", lineHeight: 1.8 }}>
-              <div>• Browsing listings on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarGurus</span>, <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarsDirect</span>, and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>AutoTempest</span></div>
-              <div>• Checking valuations on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Kelley Blue Book</span></div>
-              <div>• Reading reviews on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>MotorTrend</span>, <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Car and Driver</span>, and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>The Drive</span></div>
-              <div>• Comparing specifications on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Ultimate Specs</span> and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Zero to 60 Times</span></div>
-              <div>• Scanning owner feedback on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarComplaints</span></div>
-            </div>
-            <div style={{ fontSize: 11, color: "#64748b", fontStyle: "italic", marginTop: 10, lineHeight: 1.6 }}>
-              Sites shown are a representative sample from a broader curated panel of automotive research destinations used to identify in-market purchase intenders.
+
+            {/* Right pane – car grid reach visualization */}
+            <div style={{
+              width: 380, flexShrink: 0, background: "#16162a", borderRadius: 12,
+              border: "1px solid #1e293b", padding: "22px 26px",
+              display: "flex", flexDirection: "column", justifyContent: "center",
+            }}>
+              <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.7, marginBottom: 18 }}>
+                <span style={{ color: "#d4706e", fontWeight: 700 }}>28.6%</span> of{" "}
+                <span style={{ color: "#f8fafc", fontWeight: 700 }}>Honda Intenders</span> (~1.2MM households)
+                are reachable through streaming. Combined with linear TV, total reach extends
+                to <span style={{ color: "#f8fafc", fontWeight: 700 }}>2.4MM households</span> (57.8%),
+                leaving 1.7MM as an untapped opportunity.
+              </div>
+              <svg viewBox="0 0 310 230" style={{ width: "100%" }}>
+                {Array.from({ length: 100 }, (_, i) => {
+                  const color = i < 29 ? "#d4706e" : i < 58 ? "#c9a0a0" : "#475569";
+                  const col = i % 10;
+                  const row = Math.floor(i / 10);
+                  return (
+                    <g key={i} transform={`translate(${col * 31}, ${row * 23})`}>
+                      <path d="M3,11 L3,7 Q3,5 5,5 L8,5 L11,1 Q12,0 13,0 L19,0 Q20,0 21,1 L23,5 L26,5 Q28,5 28,7 L28,11 Z" fill={color} />
+                      <circle cx={9} cy={13} r={2.2} fill={color} />
+                      <circle cx={22} cy={13} r={2.2} fill={color} />
+                    </g>
+                  );
+                })}
+              </svg>
+              <div style={{ display: "flex", gap: 16, marginTop: 14, fontSize: 11, color: "#94a3b8" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                  <div style={{ width: 10, height: 10, borderRadius: 2, background: "#d4706e" }} />
+                  Streaming (29%)
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                  <div style={{ width: 10, height: 10, borderRadius: 2, background: "#c9a0a0" }} />
+                  Linear Only (29%)
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                  <div style={{ width: 10, height: 10, borderRadius: 2, background: "#475569" }} />
+                  Unreached (42%)
+                </div>
+              </div>
             </div>
           </div>
 
