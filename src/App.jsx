@@ -390,7 +390,7 @@ export default function App() {
           padding: "22px 26px", marginBottom: 24,
         }}>
           <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7 }}>
-            Streaming behavior for Honda Intenders was benchmarked against the general population across two dimensions: how much of their total viewing time each platform captures, and how disproportionately they engage with the content compared to the average TV-viewing household.
+            Streaming behavior for Honda Intenders was benchmarked against the general population across two dimensions: how much of their total viewing time each platform captures, and how disproportionately they engage with the content compared to the average TV-viewing household. A strong streaming strategy requires both. Share alone fills a funnel with noise, and propensity alone limits scale. The framework below balances the two, enabling more precise allocation of media investment across the streaming landscape.
           </div>
         </div>
 
