@@ -390,11 +390,7 @@ export default function App() {
           padding: "22px 26px", marginBottom: 24,
         }}>
           <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7 }}>
-            Streaming behavior for this cohort was benchmarked against the general population across two
-            dimensions: how much of their total viewing time each platform captures, and how disproportionately
-            Honda Intenders engage with the content compared to the average household. A strong streaming strategy
-            requires both. Share alone fills a funnel with noise, and propensity alone limits scale. The framework
-            below balances the two, enabling more precise allocation of media investment across the streaming landscape.
+            Streaming behavior for Honda Intenders was benchmarked against the general population across two dimensions: how much of their total viewing time each platform captures, and how disproportionately they engage with the content compared to the average TV-viewing household.
           </div>
         </div>
 
@@ -486,7 +482,7 @@ export default function App() {
             Honda Intenders spend the same amount of time on streaming platforms as the general population,
             but where they spend their time is meaningfully different. The chart above shows five platforms
             separating from the pack in the upper-right quadrant, where high viewing share meets strong content
-            affinity. These are not marginal differences. Hulu, Amazon Prime Video, Dish, Paramount+, and fubo
+            affinity. Hulu, Amazon Prime Video, Dish, Paramount+, and fubo
             each index above 100 while capturing the largest shares of intender viewing time, making them the
             most efficient entry points for streaming investment.
           </div>
