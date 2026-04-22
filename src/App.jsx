@@ -378,24 +378,25 @@ export default function App() {
             </div>
           </div>
 
-          <div style={{
-            background: "#16162a", borderRadius: 12, border: "1px solid #1e293b",
-            padding: "22px 26px", marginTop: 16, marginBottom: 0,
-          }}>
-            <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7 }}>
-              Streaming behavior for this cohort was benchmarked against the general population across two
-              dimensions: how much of their total viewing time each platform captures, and how disproportionately
-              Honda Intenders engage with the content compared to the average household. A strong streaming strategy
-              requires both. Share alone fills a funnel with noise, and propensity alone limits scale. The framework
-              below balances the two, enabling more precise allocation of media investment across the streaming landscape.
-            </div>
-          </div>
           </div>
           )}
 
         {/* Platform Analysis tab */}
         {activeTab === "platform" && (
         <div>
+
+        <div style={{
+          background: "#16162a", borderRadius: 12, border: "1px solid #1e293b",
+          padding: "22px 26px", marginBottom: 24,
+        }}>
+          <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7 }}>
+            Streaming behavior for this cohort was benchmarked against the general population across two
+            dimensions: how much of their total viewing time each platform captures, and how disproportionately
+            Honda Intenders engage with the content compared to the average household. A strong streaming strategy
+            requires both. Share alone fills a funnel with noise, and propensity alone limits scale. The framework
+            below balances the two, enabling more precise allocation of media investment across the streaming landscape.
+          </div>
+        </div>
 
         <div style={{ display: "flex", gap: 12, marginBottom: 32, flexWrap: "wrap" }}>
           {Object.entries(tierGroups).map(([key, apps]) => (
