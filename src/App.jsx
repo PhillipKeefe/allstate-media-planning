@@ -196,10 +196,14 @@ export default function App() {
           </div>
           <h1 style={{
             fontSize: 32, fontWeight: 700, letterSpacing: "-0.03em",
-            margin: "0 0 40px 0", color: "#f8fafc", lineHeight: 1.2,
+            margin: "0 0 16px 0", color: "#f8fafc", lineHeight: 1.2,
           }}>
             Streaming Investment Opportunities for Honda Intenders
           </h1>
+
+          <div style={{ fontSize: 14, color: "#cbd5e1", lineHeight: 1.7, marginBottom: 32 }}>
+            Samba TV identified an in-market audience based on real-time automotive research behavior and analyzed their streaming patterns to find the most effective paths to reach them.
+          </div>
 
           {/* At a Glance summary */}
           <div style={{
@@ -276,57 +280,55 @@ export default function App() {
               border: "1px solid #1e293b", padding: "22px 26px",
               display: "flex", flexDirection: "column", justifyContent: "center",
             }}>
-              <div style={{ minHeight: 90, marginBottom: 18, display: "flex", alignItems: "center" }}>
-                {!hoveredGroup ? (
-                  <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7 }}>
-                    <span style={{ color: "#d4706e", fontWeight: 700 }}>28.6%</span> of{" "}
-                    <span style={{ color: "#f8fafc", fontWeight: 700 }}>Honda Intenders</span> (~1.2MM households)
-                    were reached by at least one Honda ad within a streaming environment. Combined with linear TV, total reach extends
-                    to <span style={{ color: "#f8fafc", fontWeight: 700 }}>2.4MM households</span> (57.8%),
-                    leaving 1.7MM as an untapped opportunity.
-                  </div>
-                ) : (
-                  <div>
-                    {[
-                      { key: "streaming", color: "#d4706e", pct: "28.6%", label: "Reached on Streaming TV" },
-                      { key: "linear", color: "#c9a0a0", pct: "29.2%", label: "Reached on Linear TV Only" },
-                      { key: "unreached", color: "#64748b", pct: "42.2%", label: "Not Reached on TV" },
-                    ].filter(s => s.key === hoveredGroup).map(s => (
-                      <div key={s.key}>
-                        <div style={{ fontSize: 36, fontWeight: 700, color: s.color, fontFamily: "DM Sans", lineHeight: 1 }}>{s.pct}</div>
-                        <div style={{ fontSize: 24, fontWeight: 400, color: s.color, marginTop: -2, lineHeight: 1 }}>{s.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                )}
+              <div style={{ marginBottom: 18 }}>
+                <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7 }}>
+                  28.6% of Honda Intenders (~1.2MM households)
+                  were reached by at least one Honda ad within a streaming environment. Combined with linear TV, total reach extends
+                  to 2.4MM households (57.8%),
+                  leaving 1.7MM as an untapped opportunity.
+                </div>
               </div>
               <svg viewBox="0 0 310 230" style={{ width: "100%" }}>
                 {[
-                  { key: "streaming", start: 0, end: 29, color: "#d4706e", hitY: 0, hitH: 68 },
-                  { key: "linear", start: 29, end: 58, color: "#c9a0a0", hitY: 68, hitH: 68 },
-                  { key: "unreached", start: 58, end: 100, color: "#475569", hitY: 136, hitH: 94 },
-                ].map(group => (
-                  <g key={group.key}
-                    onMouseEnter={() => setHoveredGroup(group.key)}
-                    onMouseLeave={() => setHoveredGroup(null)}
-                    style={{ cursor: "default" }}
-                  >
-                    <rect x={0} y={group.hitY} width={310} height={group.hitH} fill="transparent" />
-                    {Array.from({ length: group.end - group.start }, (_, j) => {
-                      const i = group.start + j;
-                      const col = i % 10;
-                      const row = Math.floor(i / 10);
-                      const dimmed = hoveredGroup && hoveredGroup !== group.key;
-                      return (
-                        <g key={i} transform={`translate(${col * 31}, ${row * 23})`} opacity={dimmed ? 0.25 : 1} style={{ transition: "opacity 0.2s ease" }}>
-                          <path d="M3,11 L3,7 Q3,5 5,5 L8,5 L11,1 Q12,0 13,0 L19,0 Q20,0 21,1 L23,5 L26,5 Q28,5 28,7 L28,11 Z" fill={group.color} />
-                          <circle cx={9} cy={13} r={2.2} fill={group.color} />
-                          <circle cx={22} cy={13} r={2.2} fill={group.color} />
-                        </g>
-                      );
-                    })}
-                  </g>
-                ))}
+                  { key: "streaming", start: 0, end: 29, color: "#d4706e", hitY: 0, hitH: 68, pct: "28.6%", label: "Reached on Streaming TV" },
+                  { key: "linear", start: 29, end: 58, color: "#c9a0a0", hitY: 68, hitH: 68, pct: "29.2%", label: "Reached on Linear TV Only" },
+                  { key: "unreached", start: 58, end: 100, color: "#475569", hitY: 136, hitH: 94, pct: "42.2%", label: "Not Reached on TV" },
+                ].map(group => {
+                  const dimmed = hoveredGroup && hoveredGroup !== group.key;
+                  const textTarget = hoveredGroup === group.key;
+                  const textY = group.key === "streaming" ? 149 : group.key === "linear" ? 183 : 68;
+                  return (
+                    <g key={group.key}
+                      onMouseEnter={() => setHoveredGroup(group.key)}
+                      onMouseLeave={() => setHoveredGroup(null)}
+                      style={{ cursor: "default" }}
+                    >
+                      <rect x={0} y={group.hitY} width={310} height={group.hitH} fill="transparent" />
+                      {Array.from({ length: group.end - group.start }, (_, j) => {
+                        const i = group.start + j;
+                        const col = i % 10;
+                        const row = Math.floor(i / 10);
+                        return (
+                          <g key={i} transform={`translate(${col * 31}, ${row * 23})`} opacity={dimmed ? 0.05 : 1} style={{ transition: "opacity 0.2s ease" }}>
+                            <path d="M3,11 L3,7 Q3,5 5,5 L8,5 L11,1 Q12,0 13,0 L19,0 Q20,0 21,1 L23,5 L26,5 Q28,5 28,7 L28,11 Z" fill={group.color} />
+                            <circle cx={9} cy={13} r={2.2} fill={group.color} />
+                            <circle cx={22} cy={13} r={2.2} fill={group.color} />
+                          </g>
+                        );
+                      })}
+                      {textTarget && (
+                        <text
+                          x={155} y={textY}
+                          textAnchor="middle" dominantBaseline="central"
+                          fill={group.color} fontSize={18} fontWeight={700} fontFamily="DM Sans"
+                          style={{ pointerEvents: "none" }}
+                        >
+                          {group.pct} {group.label}
+                        </text>
+                      )}
+                    </g>
+                  );
+                })}
               </svg>
               <div style={{ display: "flex", gap: 16, marginTop: 14, fontSize: 11, color: "#cbd5e1" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
