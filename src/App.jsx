@@ -259,7 +259,7 @@ export default function App() {
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 2, fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginLeft: -10 }}>
                 <div className="glance-action">Create an audience of households actively researching Honda, available across any programmatic inventory</div>
-                <div className="glance-action">Activate on Hulu, Amazon Prime Video, Dish, Paramount+, and fubo, where intender viewing share and content affinity are highest</div>
+                <div className="glance-action">Activate on Hulu, Amazon Prime Video, Dish, and Paramount+, where intender viewing share and content affinity are highest</div>
               </div>
             </div>
           </div>
