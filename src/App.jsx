@@ -479,9 +479,9 @@ export default function App() {
           </div>
           <div style={{ fontSize: 13, color: "#cbd5e1" }}>
             Honda Intenders spend the same amount of time on streaming platforms as the general population,
-            but where they spend their time is meaningfully different. The chart above shows five platforms
+            but where they spend their time is meaningfully different. The chart above shows four platforms
             separating from the pack in the upper-right quadrant, where high viewing share meets strong content
-            affinity. Hulu, Amazon Prime Video, Dish, Paramount+, and fubo
+            affinity. Hulu, Amazon Prime Video, Dish, and Paramount+
             each index above 100 while capturing the largest shares of intender viewing time, making them the
             most efficient entry points for streaming investment.
           </div>
