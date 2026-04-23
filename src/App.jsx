@@ -407,7 +407,7 @@ export default function App() {
             fontSize: 16, fontWeight: 700, color: "#f8fafc",
             padding: "0 0 16px 16px", textAlign: "center",
           }}>
-            Streaming Platform Affinity vs. Share of Time Spent Streaming
+            Where to Find Honda Intenders Effectively and Efficiently
           </div>
           <div style={{ position: "absolute", top: 56, right: 34, fontSize: 10, color: "#22c55e", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: "right" }}>
             High Share +<br/>High Propensity
