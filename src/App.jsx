@@ -407,7 +407,7 @@ export default function App() {
             fontSize: 16, fontWeight: 700, color: "#f8fafc",
             padding: "0 0 16px 16px", textAlign: "center",
           }}>
-            Viewing Propensity vs. Share of Total Viewing
+            Streaming Platform Affinity vs. Share of Time Spent Streaming
           </div>
           <div style={{ position: "absolute", top: 56, right: 34, fontSize: 10, color: "#22c55e", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: "right" }}>
             High Share +<br/>High Propensity
@@ -432,7 +432,7 @@ export default function App() {
                 stroke="#334155"
                 tickFormatter={v => `${v}%`}
               >
-                <Label value="Share of Total Viewing" position="bottom" offset={14}
+                <Label value="Share of Time Spent Streaming" position="bottom" offset={14}
                   style={{ fill: "#94a3b8", fontSize: 12, fontFamily: "DM Sans" }} />
               </XAxis>
               <YAxis
@@ -447,7 +447,7 @@ export default function App() {
                     const cy = viewBox.y + viewBox.height / 2;
                     return (
                       <text x={cx} y={cy} textAnchor="middle" fill="#94a3b8" fontSize={12} fontFamily="DM Sans" transform={`rotate(-90, ${cx}, ${cy})`}>
-                        <tspan x={cx} dy="-0.6em">Viewing Propensity</tspan>
+                        <tspan x={cx} dy="-0.6em">Streaming Platform Affinity</tspan>
                         <tspan x={cx} dy="1.3em">(Median Viewing Index)</tspan>
                       </text>
                     );
