@@ -280,10 +280,9 @@ export default function App() {
             }}>
               <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginBottom: 14 }}>
                 Honda Intenders are individuals whose online behavior signals active interest in purchasing a vehicle.
-                These are consumers who are browsing inventory, comparing prices, reading professional reviews, and
-                researching reliability, all actions that indicate they are approaching or already in a buying decision.
-                Samba TV identified 4.1MM households exhibiting this behavior across a curated panel of automotive
-                research destinations.
+                They are focusing on informational content about Honda vehicles, indicating that they are approaching
+                or already in a consideration phase. Samba TV identified 4.1MM households exhibiting this behavior
+                across a curated sample of websites.
               </div>
               <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 14 }}>
                 <span style={{ fontSize: 18, fontWeight: 700, color: "#f8fafc" }}>Honda Intenders</span>
@@ -301,7 +300,7 @@ export default function App() {
                 <div>• Scanning owner feedback on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarComplaints</span></div>
               </div>
               <div style={{ fontSize: 11, color: "#64748b", fontStyle: "italic", marginTop: 10, lineHeight: 1.6 }}>
-                Sites shown are a representative sample from a broader curated panel of automotive research destinations used to identify in-market purchase intenders.
+                The websites shown above are a representative sample of automotive research destinations used to identify in-market purchase intenders.
               </div>
             </div>
 
