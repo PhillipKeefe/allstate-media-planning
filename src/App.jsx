@@ -711,7 +711,7 @@ export default function App() {
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <div style={{ flex: "1 1 280px", background: "rgba(34,197,94,0.07)", border: "1px solid rgba(34,197,94,0.25)", borderRadius: 8, padding: "12px 14px" }}>
                   <div style={{ fontSize: 10, fontWeight: 700, color: "#22c55e", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 5 }}>Primary Investment</div>
-                  <div style={{ fontSize: 12, color: "#cbd5e1", lineHeight: 1.65 }}>Honda holds a meaningful share of automotive advertising across Primary Investment platforms. These platforms combine high intender reach with strong content affinity, making them the most efficient allocation — and an important competitive battleground to maintain and grow presence.</div>
+                  <div style={{ fontSize: 12, color: "#cbd5e1", lineHeight: 1.65 }}>Primary Investment platforms combine the highest intender reach with above-average audience index, making them Honda&#8217;s most important competitive environment. Across Hulu, Amazon Prime, Dish, and Paramount+, Honda&#8217;s share of voice ranges from 5.5% to 6.4%, trailing Nissan, Subaru, Chevy, and Hyundai. Focus on growing Honda&#8217;s presence on these platforms.</div>
                 </div>
                 <div style={{ flex: "1 1 280px", background: "rgba(59,130,246,0.07)", border: "1px solid rgba(59,130,246,0.25)", borderRadius: 8, padding: "12px 14px" }}>
                   <div style={{ fontSize: 10, fontWeight: 700, color: "#3b82f6", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 5 }}>Content Affinity</div>
