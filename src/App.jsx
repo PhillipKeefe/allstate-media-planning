@@ -321,8 +321,7 @@ export default function App() {
               <div style={{ display: "flex", flexDirection: "column", gap: 2, fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginLeft: -10 }}>
                 <div className="glance-finding">7.4MM households are actively in-market for a vehicle, researching Honda and competing brands online</div>
                 <div className="glance-finding">34.8% of Automotive Intenders were reached by a Honda ad on streaming TV, leaving 4.8MM as an untapped opportunity within that environment</div>
-                <div className="glance-finding">Their viewing patterns reveal clear preferences for specific platforms</div>
-                <div className="glance-finding">Across the top streaming platforms, Honda&#8217;s share of voice trails Nissan, Subaru, Chevy, and Hyundai, indicating meaningful competitive pressure in the environments where Automotive Intenders are most active</div>
+                <div className="glance-finding">Automotive Intenders show strong preferences for specific platforms, where Honda&#8217;s share of voice trails Nissan, Subaru, Chevy, and Hyundai</div>
               </div>
             </div>
             <div style={{ flex: 1, borderLeft: "3px solid #3b82f6", paddingLeft: 16 }}>
