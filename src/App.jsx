@@ -286,7 +286,7 @@ export default function App() {
             fontSize: 11, fontWeight: 600, letterSpacing: "0.12em",
             color: "#64748b", textTransform: "uppercase", marginBottom: 16,
           }}>
-            Streaming Media Analysis — March 2026
+            Streaming Media Analysis — April 2026
           </div>
           <h1 style={{
             fontSize: 32, fontWeight: 700, letterSpacing: "-0.03em",
