@@ -706,7 +706,7 @@ export default function App() {
             {/* Intro + findings */}
             <div style={{ background: "#16162a", borderRadius: 12, border: "1px solid #1e293b", padding: "20px 24px", marginBottom: 16 }}>
               <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.8, marginBottom: 16 }}>
-                The Platform Analysis tab identified where Automotive Intenders spend their time. This view asks the next question: who else is competing for that attention? The scatter maps Honda&#8217;s share of automotive advertising against the competitive ad density of each platform. The bars break that competition down by brand. Use the tier filter to focus on platforms that matter most to your strategy, or select a brand to see how they&#8217;re positioned across the competitive media landscape.
+                The Platform Analysis tab identified where Automotive Intenders spend their time. This view asks the next question: who else is competing for that attention? The scatter plot below maps Honda&#8217;s share of automotive advertising against competitive ad density. The bar chart breaks that competition down by brand. Use the platform dropdown to focus on investment categories that matter most to your strategy, or select a brand to see how they&#8217;re positioned across the competitive media landscape.
               </div>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <div style={{ flex: "1 1 280px", background: "rgba(34,197,94,0.07)", border: "1px solid rgba(34,197,94,0.25)", borderRadius: 8, padding: "12px 14px" }}>
