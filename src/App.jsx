@@ -715,7 +715,7 @@ export default function App() {
                 </div>
                 <div style={{ flex: "1 1 280px", background: "rgba(59,130,246,0.07)", border: "1px solid rgba(59,130,246,0.25)", borderRadius: 8, padding: "12px 14px" }}>
                   <div style={{ fontSize: 10, fontWeight: 700, color: "#3b82f6", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 5 }}>Content Affinity</div>
-                  <div style={{ fontSize: 12, color: "#cbd5e1", lineHeight: 1.65 }}>Content Affinity platforms show the most concentrated competitive landscapes. If Honda is targeting a specific competitor — such as the Toyota RAV4 against the CR-V or the Hyundai Elantra against the Civic — these platforms are where that battle is being fought. A targeted investment here can directly reinforce Honda&#8217;s message against competitive alternatives.</div>
+                  <div style={{ fontSize: 12, color: "#cbd5e1", lineHeight: 1.65 }}>On Content Affinity platforms, select competitors have built concentrated positions among a highly qualified intender audience while Honda&#8217;s share of voice remains limited. Discovery+ and Apple TV+ show the most extreme imbalance: Subaru commands 44% and 33% of automotive impressions on each, with Honda at 3.4% and 1.6% respectively. YouTube TV follows a similar pattern, with Nissan, Hyundai, and Subaru each near 20% against Honda&#8217;s 5%. These platforms represent the clearest opportunity to reclaim competitive ground among subscribers that over-index on automotive intent.</div>
                 </div>
               </div>
             </div>
