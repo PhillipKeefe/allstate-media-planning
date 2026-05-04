@@ -394,7 +394,7 @@ export default function App() {
                 ].map(group => {
                   const dimmed = hoveredGroup && hoveredGroup !== group.key;
                   const textTarget = hoveredGroup === group.key;
-                  const textY = group.key === "streaming" ? 40 : group.key === "linear" ? 40 : 189;
+                  const textY = group.key === "streaming" ? 155 : group.key === "linear" ? 40 : 74;
                   return (
                     <g key={group.key}
                       onMouseEnter={() => setHoveredGroup(group.key)}
