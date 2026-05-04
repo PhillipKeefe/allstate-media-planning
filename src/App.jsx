@@ -330,7 +330,7 @@ export default function App() {
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 2, fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginLeft: -10 }}>
                 <div className="glance-action">Create an audience of in-market automotive consumers available across any programmatic inventory</div>
-                <div className="glance-action">Activate on Hulu, Amazon Prime Video, Dish, and Paramount+, where intender viewing share and content affinity are highest</div>
+                <div className="glance-action">Reallocate media budget toward Hulu, Amazon Prime Video, Dish, and Paramount+, where competitors currently hold a greater share of impressions, improving Honda&#8217;s presence in environments where Automotive Intenders are more likely to be found</div>
               </div>
             </div>
           </div>
