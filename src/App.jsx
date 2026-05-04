@@ -292,7 +292,7 @@ export default function App() {
             fontSize: 32, fontWeight: 700, letterSpacing: "-0.03em",
             margin: "0 0 16px 0", color: "#f8fafc", lineHeight: 1.2,
           }}>
-            Streaming Investment Opportunities for Honda Intenders
+            Streaming Investment Opportunities for Automotive Intenders
           </h1>
 
           <div className="tab-bar">
@@ -310,7 +310,7 @@ export default function App() {
           {activeTab === "summary" && (
           <div>
           <div style={{ fontSize: 14, color: "#cbd5e1", lineHeight: 1.7, marginBottom: 32 }}>
-            Samba TV identified an in-market audience based on real-time automotive research behavior and analyzed their streaming patterns to find the most effective paths to reach them.
+            Samba TV identified an in-market audience based on real-time automotive research behavior, analyzed their streaming patterns to recommend where to reach them, and compared each competitor's share of voice across the top streaming platforms to support strategic media planning.
           </div>
 
           <div style={{ display: "flex", gap: 16, marginBottom: 20 }}>
@@ -320,7 +320,7 @@ export default function App() {
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 2, fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginLeft: -10 }}>
                 <div className="glance-finding">7.4MM households are actively in-market for a vehicle, researching Honda and competing brands online</div>
-                <div className="glance-finding">34.8% of Honda Intenders have been reached by a Honda ad on streaming — leaving 1.1MM as an untapped opportunity for incremental reach</div>
+                <div className="glance-finding">34.8% of Automotive Intenders were reached by a Honda ad on streaming TV, leaving 4.8MM as an untapped opportunity within that environment</div>
                 <div className="glance-finding">Their viewing patterns reveal clear preferences for specific platforms</div>
               </div>
             </div>
@@ -380,10 +380,10 @@ export default function App() {
             }}>
               <div style={{ marginBottom: 18 }}>
                 <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7 }}>
-                  34.8% of Honda Intenders (~1.1MM households)
+                  34.8% of Automotive Intenders (~2.6MM households)
                   were reached by at least one Honda ad within a streaming environment. Combined with linear TV, total reach extends
-                  to 2.0MM households (63.9%),
-                  leaving 1.1MM Honda Intenders as an untapped opportunity.
+                  to 4.7MM households (63.9%),
+                  leaving 2.7MM Automotive Intenders as an untapped opportunity.
                 </div>
               </div>
               <svg viewBox="0 0 310 230" style={{ width: "100%" }}>
@@ -394,7 +394,7 @@ export default function App() {
                 ].map(group => {
                   const dimmed = hoveredGroup && hoveredGroup !== group.key;
                   const textTarget = hoveredGroup === group.key;
-                  const textY = group.key === "streaming" ? 195 : group.key === "linear" ? 165 : 45;
+                  const textY = group.key === "streaming" ? 40 : group.key === "linear" ? 40 : 189;
                   return (
                     <g key={group.key}
                       onMouseEnter={() => setHoveredGroup(group.key)}
