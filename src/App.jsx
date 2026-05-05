@@ -288,7 +288,7 @@ export default function App() {
             fontSize: 11, fontWeight: 600, letterSpacing: "0.12em",
             color: "#64748b", textTransform: "uppercase", marginBottom: 16,
           }}>
-            Streaming Media Analysis — April 2026
+            Streaming Media Analysis — May 2026
           </div>
           <h1 style={{
             fontSize: 32, fontWeight: 700, letterSpacing: "-0.03em",
@@ -958,7 +958,7 @@ export default function App() {
           fontSize: 11, color: "#334155", textAlign: "center", paddingTop: 16,
           borderTop: "1px solid #1e293b",
         }}>
-          Source: Samba Streaming Panel · Samba Open Web Behavioral Data · April 2026
+          Source: Samba Streaming Panel · Samba Open Web Behavioral Data · May 2026
         </div>
       </div>
     </div>
