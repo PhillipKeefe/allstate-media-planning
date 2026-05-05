@@ -410,7 +410,9 @@ export default function App() {
                         const row = Math.floor(i / 10);
                         return (
                           <g key={i} transform={`translate(${col * 31}, ${row * 23})`} opacity={dimmed ? 0.05 : 1} style={{ transition: "opacity 0.2s ease" }}>
-                            <path d="M14,0 L26,5 L26,16 Q26,22 14,26 Q2,22 2,16 L2,5 Z" fill={group.color} />
+                            <path d="M3,11 L3,7 Q3,5 5,5 L8,5 L11,1 Q12,0 13,0 L19,0 Q20,0 21,1 L23,5 L26,5 Q28,5 28,7 L28,11 Z" fill={group.color} />
+                            <circle cx={9} cy={13} r={2.2} fill={group.color} />
+                            <circle cx={22} cy={13} r={2.2} fill={group.color} />
                           </g>
                         );
                       })}
