@@ -106,7 +106,7 @@ const CustomTooltip = ({ active, payload }) => {
     }}>
       <div style={{ fontWeight: 700, fontSize: 15, color: "#f8fafc", marginBottom: 4 }}>{d.app}</div>
       <div style={{ display: "flex", justifyContent: "space-between", gap: 24 }}>
-        <span style={{ color: "#94a3b8" }}>Intender Share</span>
+        <span style={{ color: "#94a3b8" }}>In-Market Consumer Share</span>
         <span style={{ fontFamily: "JetBrains Mono", fontWeight: 500 }}>{d.intender_pct.toFixed(1)}%</span>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", gap: 24 }}>
@@ -294,7 +294,7 @@ export default function App() {
             fontSize: 32, fontWeight: 700, letterSpacing: "-0.03em",
             margin: "0 0 16px 0", color: "#f8fafc", lineHeight: 1.2,
           }}>
-            Streaming Investment Opportunities for Insurance Intenders
+            Investment Opportunities for Auto Insurance Shoppers
           </h1>
 
           <div className="tab-bar">
@@ -312,7 +312,7 @@ export default function App() {
           {activeTab === "summary" && (
           <div>
           <div style={{ fontSize: 14, color: "#cbd5e1", lineHeight: 1.7, marginBottom: 32 }}>
-            Samba identified an in-market audience based on real-time insurance research behavior, analyzed their streaming patterns to recommend where to reach them, and compared each competitor's share of voice across the top streaming platforms to support strategic media planning.
+            Samba identified an in-market audience based on consumers researching auto insurance online, analyzed their streaming patterns to recommend where to reach them, and compared each competitor's share of voice across the top streaming platforms to support strategic media planning.
           </div>
 
           <div style={{ display: "flex", gap: 16, marginBottom: 20 }}>
@@ -321,9 +321,9 @@ export default function App() {
                 Finding
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 2, fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginLeft: -10 }}>
-                <div className="glance-finding">8.1MM households are actively in-market for insurance coverage, researching Allstate and competing carriers online</div>
-                <div className="glance-finding">45.5% of Insurance Intenders were reached by an Allstate ad on streaming TV, leaving 4.4MM as an untapped opportunity within that environment</div>
-                <div className="glance-finding">Insurance Intenders show strong preferences for specific platforms, where Allstate&#8217;s share of voice trails Progressive and Liberty Mutual on the most valuable environments</div>
+                <div className="glance-finding">8.1MM households are actively in market for insurance coverage, researching Allstate and competing carriers online</div>
+                <div className="glance-finding">45.5% of in-market consumers were reached by an Allstate ad on streaming TV, leaving 4.4MM as an untapped opportunity within that environment</div>
+                <div className="glance-finding">In-market consumers show strong preferences for specific platforms, where Allstate&#8217;s share of voice trails Progressive and Liberty Mutual on the most valuable environments</div>
               </div>
             </div>
             <div style={{ flex: 1, borderLeft: "3px solid #3b82f6", paddingLeft: 16 }}>
@@ -332,7 +332,7 @@ export default function App() {
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 2, fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginLeft: -10 }}>
                 <div className="glance-action">Create an audience of in-market insurance consumers available across any programmatic inventory</div>
-                <div className="glance-action">Reallocate media budget toward Hulu, Amazon Prime Video, Dish, and Paramount+, where Progressive and Liberty Mutual currently dominate ad share, improving Allstate&#8217;s presence in environments where Insurance Intenders are most likely to be found</div>
+                <div className="glance-action">Reallocate media budget toward Hulu, Amazon Prime Video, Dish, and Paramount+, where Progressive and Liberty Mutual currently dominate ad share, improving Allstate&#8217;s presence in environments where in-market consumers are most likely to be found</div>
               </div>
             </div>
           </div>
@@ -349,13 +349,13 @@ export default function App() {
               padding: "22px 26px",
             }}>
               <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7, marginBottom: 14 }}>
-                Insurance Intenders are individuals whose online behavior signals active interest in purchasing or switching an insurance policy.
+                In-market consumers are individuals whose online behavior signals active interest in purchasing or switching an insurance policy.
                 They are engaging with comparison tools, rate calculators, and carrier review content, indicating that they are approaching
                 or already in an active consideration phase. Samba identified 8.1MM households exhibiting this behavior
                 across a curated sample of websites.
               </div>
               <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 14 }}>
-                <span style={{ fontSize: 18, fontWeight: 700, color: "#f8fafc" }}>Insurance Intenders</span>
+                <span style={{ fontSize: 18, fontWeight: 700, color: "#f8fafc" }}>In-Market Consumers</span>
                 <span style={{ fontSize: 13, color: "#64748b" }}>·</span>
                 <span style={{ fontSize: 18, fontWeight: 700, color: "#f8fafc" }}>8.1MM Households</span>
               </div>
@@ -382,10 +382,10 @@ export default function App() {
             }}>
               <div style={{ marginBottom: 18 }}>
                 <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7 }}>
-                  45.5% of Insurance Intenders (~3.7MM households)
+                  45.5% of in-market consumers (~3.7MM households)
                   were reached by at least one Allstate ad within a streaming environment. Combined with linear TV, total reach extends
                   to 6.0MM households (73.8%),
-                  leaving 2.1MM Insurance Intenders as an untapped opportunity.
+                  leaving 2.1MM in-market consumers as an untapped opportunity.
                 </div>
               </div>
               <svg viewBox="0 0 310 230" style={{ width: "100%" }}>
@@ -457,7 +457,7 @@ export default function App() {
           padding: "22px 26px", marginBottom: 24,
         }}>
           <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7 }}>
-            Streaming behavior for Insurance Intenders was benchmarked against the general population across two dimensions: how much of their total viewing time each platform captures, and how disproportionately they engage with the content compared to the average TV-viewing household. A strong streaming strategy requires both. Share alone fills a funnel with noise, and propensity alone limits scale. The framework below balances the two, enabling more precise allocation of Allstate media investment across the streaming landscape.
+            Streaming behavior for in-market consumers was benchmarked against the general population across two dimensions: how much of their total viewing time each platform captures, and how disproportionately they engage with the content compared to the average TV-viewing household. A strong streaming strategy requires both. Share alone fills a funnel with noise, and propensity alone limits scale. The framework below balances the two, enabling more precise allocation of Allstate media investment across the streaming landscape.
           </div>
         </div>
 
@@ -475,7 +475,7 @@ export default function App() {
             fontSize: 16, fontWeight: 700, color: "#f8fafc",
             padding: "0 0 16px 16px", textAlign: "center",
           }}>
-            Where to Find Insurance Intenders Effectively and Efficiently
+            Where to Find In-Market Consumers Effectively and Efficiently
           </div>
           <div style={{ position: "absolute", top: 56, right: 34, fontSize: 10, color: "#22c55e", fontWeight: 600, opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: "right" }}>
             High Share +<br/>High Propensity
@@ -546,7 +546,7 @@ export default function App() {
             Key Insight
           </div>
           <div style={{ fontSize: 13, color: "#cbd5e1" }}>
-            Insurance Intenders spend comparable time on most streaming platforms as the general population, but where they spend their time is meaningfully different. Four platforms rise to the top in the upper-right quadrant, combining strong content affinity with the largest shares of intender viewing time. Hulu (index 111), Amazon Prime Video (109), Paramount+ (105), and Dish (101) each over-index while capturing the greatest portions of Insurance Intender streaming minutes, making them the most efficient entry points for Allstate streaming investment. Notably, Pluto TV (index 139) exhibits the strongest affinity of any platform, representing a high-efficiency niche opportunity.
+            In-market consumers spend comparable time on most streaming platforms as the general population, but where they spend their time is meaningfully different. Four platforms rise to the top in the upper-right quadrant, combining strong content affinity with the largest shares of in-market consumer viewing time. Hulu (index 111), Amazon Prime Video (109), Paramount+ (105), and Dish (101) each over-index while capturing the greatest portions of in-market consumer streaming minutes, making them the most efficient entry points for Allstate streaming investment. Notably, Pluto TV (index 139) exhibits the strongest affinity of any platform, representing a high-efficiency niche opportunity.
           </div>
         </div>
         </div>
@@ -564,7 +564,7 @@ export default function App() {
               Priority Score Table
             </div>
             <div style={{ fontSize: 12, color: "#64748b", marginTop: 4 }}>
-              Priority = Intender Share × Median Viewing Index. Click headers to sort.
+              Priority = In-Market Consumer Share × Median Viewing Index. Click headers to sort.
             </div>
           </div>
           <div style={{ overflowX: "auto" }}>
@@ -573,7 +573,7 @@ export default function App() {
                 <tr style={{ borderBottom: "1px solid #1e293b" }}>
                   {[
                     { key: "app",          label: "Application",      align: "left"  },
-                    { key: "intender_pct", label: "Intender Share %", align: "right" },
+                    { key: "intender_pct", label: "In-Market Consumer Share %", align: "right" },
                     { key: "median_index", label: "Median Index",     align: "right" },
                     { key: "allstate_sov", label: "Allstate SOV %",   align: "right" },
                     { key: "priority",     label: "Priority",         align: "right" },
@@ -699,16 +699,16 @@ export default function App() {
             {/* Intro + findings */}
             <div style={{ background: "#16162a", borderRadius: 12, border: "1px solid #1e293b", padding: "20px 24px", marginBottom: 16 }}>
               <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.8, marginBottom: 16 }}>
-                The Platform Analysis tab identified where Insurance Intenders spend their time. This view asks the next question: who else is competing for that attention? The scatter plot below maps Allstate&#8217;s share of insurance advertising against competitive ad density. The bar chart breaks that competition down by brand. Use the platform dropdown to focus on investment categories that matter most to your strategy, or select a brand to see how they&#8217;re positioned across the competitive media landscape.
+                The Platform Analysis tab identified where in-market consumers spend their time. This view asks the next question: who else is competing for that attention? The scatter plot below maps Allstate&#8217;s share of insurance advertising against competitive ad density. The bar chart breaks that competition down by brand. Use the platform dropdown to focus on investment categories that matter most to your strategy, or select a brand to see how they&#8217;re positioned across the competitive media landscape.
               </div>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <div style={{ flex: "1 1 280px", background: "rgba(34,197,94,0.07)", border: "1px solid rgba(34,197,94,0.25)", borderRadius: 8, padding: "12px 14px" }}>
                   <div style={{ fontSize: 10, fontWeight: 700, color: "#22c55e", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 5 }}>Primary Investment</div>
-                  <div style={{ fontSize: 12, color: "#cbd5e1", lineHeight: 1.65 }}>Primary Investment platforms combine the highest intender reach with above-average audience index, making them Allstate&#8217;s most critical competitive environment. Across Hulu, Amazon Prime Video, Dish, and Paramount+, Allstate&#8217;s share of voice ranges from 8% to 11%, trailing Progressive (27&#8211;45%) and Liberty Mutual (35&#8211;45%). Growing Allstate&#8217;s presence on these platforms represents the highest-leverage investment opportunity.</div>
+                  <div style={{ fontSize: 12, color: "#cbd5e1", lineHeight: 1.65 }}>Primary Investment platforms combine the highest in-market consumer reach with above-average audience index, making them Allstate&#8217;s most critical competitive environment. Across Hulu, Amazon Prime Video, Dish, and Paramount+, Allstate&#8217;s share of voice ranges from 8% to 11%, trailing Progressive (27&#8211;45%) and Liberty Mutual (35&#8211;45%). Growing Allstate&#8217;s presence on these platforms represents the highest-leverage investment opportunity.</div>
                 </div>
                 <div style={{ flex: "1 1 280px", background: "rgba(59,130,246,0.07)", border: "1px solid rgba(59,130,246,0.25)", borderRadius: 8, padding: "12px 14px" }}>
                   <div style={{ fontSize: 10, fontWeight: 700, color: "#3b82f6", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 5 }}>Content Affinity</div>
-                  <div style={{ fontSize: 12, color: "#cbd5e1", lineHeight: 1.65 }}>Content Affinity platforms over-index heavily on insurance intent. Pluto TV stands out with a 139 median index&#8212;Insurance Intenders spend 39% more time there than the average viewer&#8212;yet Allstate holds only 4% SOV, while Progressive (44%) and Liberty Mutual (43%) dominate. Fox Nation and DirecTV also over-index with elevated HHI scores, signaling concentrated competitor spend with limited Allstate presence and significant room to gain share.</div>
+                  <div style={{ fontSize: 12, color: "#cbd5e1", lineHeight: 1.65 }}>Content Affinity platforms over-index heavily on insurance intent. Pluto TV stands out with a 139 median index&#8212;in-market consumers spend 39% more time there than the average viewer&#8212;yet Allstate holds only 4% SOV, while Progressive (44%) and Liberty Mutual (43%) dominate. Fox Nation and DirecTV also over-index with elevated HHI scores, signaling concentrated competitor spend with limited Allstate presence and significant room to gain share.</div>
                 </div>
               </div>
             </div>
@@ -921,17 +921,17 @@ export default function App() {
           padding: "20px 22px", marginBottom: 32,
         }}>
           <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.8 }}>
-            <strong style={{ color: "#cbd5e1" }}>Insurance Intender viewing share (x-axis):</strong> The percentage of total Insurance Intender
+            <strong style={{ color: "#cbd5e1" }}>In-Market Consumer viewing share (x-axis):</strong> The percentage of total in-market consumer
             weighted streaming minutes captured by each app. Displayed on a logarithmic scale to better
             distribute the wide range of values (0.5% to 22.6%). Actual percentages are shown on all labels.
           </div>
           <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.8, marginTop: 8 }}>
-            <strong style={{ color: "#cbd5e1" }}>Weighted median viewing index (y-axis):</strong> The amount of time a typical Insurance Intender
+            <strong style={{ color: "#cbd5e1" }}>Weighted median viewing index (y-axis):</strong> The amount of time a typical in-market consumer
             spends on each app divided by the time spent by a typical TV-viewing household, indexed to 100.
             Uses population-weighted medians to eliminate outlier bias. Values over 100 represent content affinity.
           </div>
           <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.8, marginTop: 8 }}>
-            <strong style={{ color: "#cbd5e1" }}>Priority score:</strong> A composite metric (intender share × median index) used to rank
+            <strong style={{ color: "#cbd5e1" }}>Priority score:</strong> A composite metric (in-market consumer share × median index) used to rank
             platforms across both dimensions simultaneously. Platforms with strong performance on both share and
             propensity score highest, making it easier to identify where investment will be most effective.
           </div>
