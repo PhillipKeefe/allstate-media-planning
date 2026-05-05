@@ -665,12 +665,8 @@ export default function App() {
           const padL = 72, padR = 24, padT = 28, padB = 44;
           const plotW = svgW - padL - padR, plotH = svgH - padT - padB;
           const maxX = 25;
-          const hhiDataMin = Math.min(...sovMerged.map(d => d.hhi));
-          const hhiDataMax = Math.max(...sovMerged.map(d => d.hhi));
-          const hhiRange   = hhiDataMax - hhiDataMin;
-          const hhiPad     = Math.ceil(hhiRange * 0.34 / 250) * 250;
-          const hhiMin     = Math.floor((hhiDataMin - hhiPad) / 250) * 250;
-          const hhiMax     = Math.ceil((hhiDataMax + hhiPad) / 250) * 250;
+          const hhiMin     = 2000;
+          const hhiMax     = 5000;
           const xScale = v => padL + (v / maxX) * plotW;
           const yScale = v => padT + plotH - ((v - hhiMin) / (hhiMax - hhiMin)) * plotH;
           const maxPriority = Math.max(...sovMerged.map(d => d.priority));
