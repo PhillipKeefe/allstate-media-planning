@@ -367,7 +367,7 @@ export default function App() {
                 <div>• Researching coverage options on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>NerdWallet</span> and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Bankrate</span></div>
                 <div>• Reading carrier reviews on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>ValuePenguin</span> and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>PolicyGenius</span></div>
                 <div>• Visiting <span style={{ color: "#f1f5f9", fontWeight: 600 }}>DMV.org</span> for vehicle registration and new driver resources</div>
-                <div>• Browsing listings tied to life events through <span style={{ color: "#f1f5f9", fontWeight: 600 }}>moving</span> and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>new car purchase</span> intent signals</div>
+                <div>• Browsing car listings on <span style={{ color: "#f1f5f9", fontWeight: 600 }}>CarGurus</span> and <span style={{ color: "#f1f5f9", fontWeight: 600 }}>Autotrader</span></div>
               </div>
               <div style={{ fontSize: 11, color: "#64748b", fontStyle: "italic", marginTop: 10, lineHeight: 1.6 }}>
                 The websites shown above are a representative sample of insurance research destinations used to identify in-market consumers across all carriers.
@@ -457,7 +457,7 @@ export default function App() {
           padding: "22px 26px", marginBottom: 24,
         }}>
           <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.7 }}>
-            Streaming behavior for in-market consumers was benchmarked against the general population across two dimensions: how much of their total viewing time each platform captures, and how disproportionately they engage with the content compared to the average TV-viewing household. A strong streaming strategy requires both. Share alone fills a funnel with noise, and propensity alone limits scale. The framework below balances the two, enabling more precise allocation of Allstate media investment across the streaming landscape.
+            Streaming behavior for in-market consumers was analyzed across two dimensions: how much of their total viewing time each platform captures, and how disproportionately they engage with the content compared to the average TV-viewing household. A strong streaming strategy requires both. Share alone fills a funnel with noise, and propensity alone limits scale. The framework below balances the two, enabling more precise allocation of Allstate media investment across the streaming landscape.
           </div>
         </div>
 
