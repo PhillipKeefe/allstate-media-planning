@@ -680,9 +680,15 @@ export default function App() {
             { key: "deprioritize", label: "Supplemental"        },
           ];
 
-          const filteredPlatforms = sovTierFilter === "all"
+          // Apple TV+ excluded from this tab: 39.23% Allstate SOV and 5232 HHI
+          // are both far outside the chart's plot bounds, and its low total
+          // viewing volume (2.4B vs Hulu's 91B) makes it a low-signal outlier
+          // for competitive analysis. It remains in the data and on the
+          // Platform Analysis tab.
+          const filteredPlatforms = (sovTierFilter === "all"
             ? [...sovMerged]
-            : sovMerged.filter(d => d.tier === sovTierFilter);
+            : sovMerged.filter(d => d.tier === sovTierFilter)
+          ).filter(d => d.app !== "Apple TV+");
 
           const sortedPlatforms = sovBrandFocus
             ? [...filteredPlatforms].sort((a, b) => (b[sovBrandFocus] || 0) - (a[sovBrandFocus] || 0))
@@ -708,7 +714,7 @@ export default function App() {
                 </div>
                 <div style={{ flex: "1 1 280px", background: "rgba(59,130,246,0.07)", border: "1px solid rgba(59,130,246,0.25)", borderRadius: 8, padding: "12px 14px" }}>
                   <div style={{ fontSize: 10, fontWeight: 700, color: "#3b82f6", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 5 }}>Content Affinity</div>
-                  <div style={{ fontSize: 12, color: "#cbd5e1", lineHeight: 1.65 }}>Content Affinity platforms over-index heavily on insurance intent. Pluto TV stands out with a 139 median index&#8212;in-market consumers spend 39% more time there than the average viewer&#8212;yet Allstate holds only 4% SOV, while Progressive (44%) and Liberty Mutual (43%) dominate. Fox Nation and DirecTV also over-index with elevated HHI scores, signaling concentrated competitor spend with limited Allstate presence and significant room to gain share.</div>
+                  <div style={{ fontSize: 12, color: "#cbd5e1", lineHeight: 1.65 }}>Content Affinity platforms over-index heavily on insurance intent. Pluto TV stands out with a 139 median index (in-market consumers spend 39% more time there than the average viewer), yet Allstate holds only 4% SOV, while Progressive (44%) and Liberty Mutual (43%) dominate. Fox Nation and DirecTV also over-index with elevated HHI scores, signaling concentrated competitor spend with limited Allstate presence and significant room to gain share.</div>
                 </div>
               </div>
             </div>
@@ -719,7 +725,8 @@ export default function App() {
               <div style={{ flex: 1, minWidth: 0, background: "#16162a", borderRadius: 12, border: "1px solid #1e293b", padding: "18px 14px 10px", display: "flex", flexDirection: "column" }}>
                 <div style={{ fontSize: 15, fontWeight: 700, color: "#f8fafc", marginBottom: 4, textAlign: "center" }}>Allstate&#8217;s Share of Voice Relative to Competitive Ad Density</div>
                 <div style={{ fontSize: 11, color: "#64748b", textAlign: "center", marginBottom: 26 }}>Among all TV-viewing households</div>
-                <svg viewBox={`0 0 ${svgW} ${svgH}`} style={{ width: "100%" }}>
+                <div style={{ position: "relative", width: "100%" }}>
+                <svg viewBox={`0 0 ${svgW} ${svgH}`} style={{ width: "100%", display: "block" }}>
                   {Array.from({length: (hhiMax - hhiMin) / 250 + 1}, (_,i) => hhiMin + i * 250).map(v => (
                     <g key={v}>
                       <line x1={padL} x2={svgW-padR} y1={yScale(v)} y2={yScale(v)} stroke="#1e293b" strokeWidth={1} strokeDasharray="3 3" />
@@ -740,7 +747,13 @@ export default function App() {
                     <tspan x={22} dy="1.3em">(Herfindahl-Hirschman Index)</tspan>
                   </text>
                   {[...sovMerged]
-                    .sort((a,b) => sovSelected && a.app === sovSelected.app ? 1 : sovSelected && b.app === sovSelected.app ? -1 : b.total_viewing - a.total_viewing)
+                    .sort((a,b) => {
+                      const aFocus = (sovSelected && a.app === sovSelected.app) || (sovHovered === a.app);
+                      const bFocus = (sovSelected && b.app === sovSelected.app) || (sovHovered === b.app);
+                      if (aFocus && !bFocus) return 1;
+                      if (bFocus && !aFocus) return -1;
+                      return b.total_viewing - a.total_viewing;
+                    })
                     .map(d => {
                       const cx = xScale(d.allstate), cy = yScale(d.hhi), r = rScale(d.priority);
                       const tierColor = TIER_META[d.tier].color;
@@ -762,15 +775,53 @@ export default function App() {
                             strokeWidth={isSelected ? 2 : 0.75}
                             style={{ transition: "fillOpacity 0.15s, strokeOpacity 0.15s" }}
                           />
-                          {(isSelected || isHovered) && (
-                            <text x={cx} y={cy - r - 4} textAnchor="middle" fill="#f8fafc" fontSize={9} fontWeight={700} style={{ pointerEvents: "none" }}>
-                              {d.app}
-                            </text>
-                          )}
                         </g>
                       );
                     })}
                 </svg>
+                {(() => {
+                  // HTML tooltip overlay — matches Platform Analysis tab styling.
+                  // Rendered outside the SVG so it always layers above all bubbles.
+                  const target = sovSelected || (sovHovered ? sovMerged.find(p => p.app === sovHovered) : null);
+                  if (!target || !TIER_META[target.tier]) return null;
+                  const cx = xScale(target.allstate);
+                  const cy = yScale(target.hhi);
+                  const r  = rScale(target.priority);
+                  const meta = TIER_META[target.tier];
+                  // Flip to the left side if the bubble is past the chart's midpoint.
+                  const onRightSide = cx > svgW * 0.55;
+                  const xPct = onRightSide
+                    ? ((cx - r - 8) / svgW) * 100
+                    : ((cx + r + 8) / svgW) * 100;
+                  const yPct = (cy / svgH) * 100;
+                  const transform = onRightSide
+                    ? "translate(-100%, -50%)"
+                    : "translate(0, -50%)";
+                  return (
+                    <div style={{
+                      position: "absolute",
+                      left: `${xPct}%`, top: `${yPct}%`,
+                      transform,
+                      background: "#1a1a2e", border: `1px solid ${meta.color}`,
+                      borderRadius: 8, padding: "12px 16px",
+                      fontFamily: "'DM Sans', sans-serif",
+                      color: "#e2e8f0", fontSize: 13, lineHeight: 1.7, minWidth: 220,
+                      boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+                      pointerEvents: "none", zIndex: 10,
+                    }}>
+                      <div style={{ fontWeight: 700, fontSize: 15, color: "#f8fafc", marginBottom: 4 }}>{target.app}</div>
+                      <div style={{ display: "flex", justifyContent: "space-between", gap: 24 }}>
+                        <span style={{ color: "#94a3b8" }}>Share of Time Spent Streaming</span>
+                        <span style={{ fontFamily: "JetBrains Mono", fontWeight: 500 }}>{target.intender_pct.toFixed(1)}%</span>
+                      </div>
+                      <div style={{ display: "flex", justifyContent: "space-between", gap: 24 }}>
+                        <span style={{ color: "#94a3b8" }}>Streaming Platform Affinity</span>
+                        <span style={{ fontFamily: "JetBrains Mono", fontWeight: 500 }}>{target.median_index}</span>
+                      </div>
+                    </div>
+                  );
+                })()}
+                </div>
                 <div style={{ display: "flex", gap: 14, marginTop: 28, flexWrap: "wrap" }}>
                   {Object.entries(TIER_META).map(([k,v]) => (
                     <div key={k} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 10, color: "#64748b" }}>
