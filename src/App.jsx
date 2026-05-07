@@ -766,7 +766,7 @@ export default function App() {
                       const strokeOp = hardDimmed ? 0.1  : softDimmed ? 0.25 : isSelected ? 1    : isHovered ? 0.95 : 0.7;
                       return (
                         <g key={d.app} style={{ cursor: "pointer" }}
-                          onClick={() => setSovSelected(isSelected ? null : d)}
+                          onClick={() => { setSovSelected(isSelected ? null : d); setSovHovered(null); }}
                           onMouseEnter={() => setSovHovered(d.app)}
                           onMouseLeave={() => setSovHovered(null)}>
                           <circle cx={cx} cy={cy} r={r}
@@ -782,7 +782,10 @@ export default function App() {
                 {(() => {
                   // HTML tooltip overlay — matches Platform Analysis tab styling.
                   // Rendered outside the SVG so it always layers above all bubbles.
-                  const target = sovSelected || (sovHovered ? sovMerged.find(p => p.app === sovHovered) : null);
+                  // Tooltip is purely hover-driven; clicking a bubble dismisses
+                  // it (the click handler clears sovHovered) so it doesn't
+                  // freeze on the selected bubble.
+                  const target = sovHovered ? sovMerged.find(p => p.app === sovHovered) : null;
                   if (!target || !TIER_META[target.tier]) return null;
                   const cx = xScale(target.allstate);
                   const cy = yScale(target.hhi);
