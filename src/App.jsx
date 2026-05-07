@@ -805,16 +805,16 @@ export default function App() {
                       background: "#1a1a2e", border: `1px solid ${meta.color}`,
                       borderRadius: 8, padding: "12px 16px",
                       fontFamily: "'DM Sans', sans-serif",
-                      color: "#e2e8f0", fontSize: 13, lineHeight: 1.7, minWidth: 220,
+                      color: "#e2e8f0", fontSize: 13, lineHeight: 1.7, minWidth: 280,
                       boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
                       pointerEvents: "none", zIndex: 10,
                     }}>
                       <div style={{ fontWeight: 700, fontSize: 15, color: "#f8fafc", marginBottom: 4 }}>{target.app}</div>
-                      <div style={{ display: "flex", justifyContent: "space-between", gap: 24 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", gap: 24, whiteSpace: "nowrap" }}>
                         <span style={{ color: "#94a3b8" }}>Share of Time Spent Streaming</span>
                         <span style={{ fontFamily: "JetBrains Mono", fontWeight: 500 }}>{target.intender_pct.toFixed(1)}%</span>
                       </div>
-                      <div style={{ display: "flex", justifyContent: "space-between", gap: 24 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", gap: 24, whiteSpace: "nowrap" }}>
                         <span style={{ color: "#94a3b8" }}>Streaming Platform Affinity</span>
                         <span style={{ fontFamily: "JetBrains Mono", fontWeight: 500 }}>{target.median_index}</span>
                       </div>
